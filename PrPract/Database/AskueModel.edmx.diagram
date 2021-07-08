@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6ed43dff58d84128924e1d88da5be218" Name="Diagram1" ZoomLevel="80">
+        <EntityTypeShape EntityType="АСКУЭModel.Абонент" Width="1.5" PointX="7.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.Адрес" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.Акт_снятия_показаний_приборов_учета" Width="1.5" PointX="14.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.Временной_период" Width="1.5" PointX="12" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.Данные_о_жилой_площади" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.Доверенность" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.Договор_энергоснабжения" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.Зона_суток" Width="1.5" PointX="9.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.Контактные_данные" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.Личные_данные" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.Паспорт" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.Показания_прибора_учета" Width="1.5" PointX="12" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.Пользователь" Width="1.5" PointX="9.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.Представитель_компании" Width="1.5" PointX="7.5" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.Прибор_учёта" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.Ставка" Width="1.5" PointX="12" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.Тариф" Width="1.5" PointX="7.5" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.ПредставлениеАбонент" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.ПредставлениеАкты" Width="1.5" PointX="11.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.ПредставлениеДоговоры" Width="1.5" PointX="2.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.ПредставлениеЗоны_суток" Width="1.5" PointX="13.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.ПредставлениеКонт_д" Width="1.5" PointX="4.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.ПредставлениеЛичн_д" Width="1.5" PointX="14.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.ПредставлениеПаспорт" Width="1.5" PointX="14.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.ПредставлениеПредставитель_компании" Width="1.5" PointX="14.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.ПредставлениеСтавки" Width="1.5" PointX="15.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="АСКУЭModel.ПредставлениеТарифы" Width="1.5" PointX="16.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="АСКУЭModel.FK__Абонент__Код_дан__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Абонент__Код_дан__5D95E53A" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Абонент__Код_кон__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Абонент__Код_кон__55F4C372" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Абонент__Код_лич__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Абонент__Код_лич__540C7B00" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Договор_э__Код_а__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Договор_э__Код_а__51300E55" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Контактны__Код_а__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Контактны__Код_а__56E8E7AB" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Паспорт__Код_адр__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Паспорт__Код_адр__57DD0BE4" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Акт_сняти__Код_п__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Акт_сняти__Код_п__58D1301D" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Временной__Код_з__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Временной__Код_з__5F7E2DAC" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Представи__Номер__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Представи__Номер__5E8A0973" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Договор_э__Код_п__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Договор_э__Код_п__5CA1C101" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Договор_э__Код_т__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Договор_э__Код_т__531856C7" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Договор_э__Номер__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Договор_э__Номер__59C55456" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Показания__Номер__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Показания__Номер__5AB9788F" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Ставка__Код_зоны__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Ставка__Код_зоны__607251E5" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Личные_данные__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Личные_данные__5BAD9CC8" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Представи__Код_л__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Представи__Код_л__55009F39" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Ставка__Код_тари__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="АСКУЭModel.FK__Ставка__Код_тари__5224328E" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

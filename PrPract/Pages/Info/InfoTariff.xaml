@@ -1,0 +1,63 @@
+﻿<Page x:Class="PrPract.Pages.Info.InfoTariff"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PrPract.Pages.Info"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="InfoTariff">
+    <Page.Resources>
+        <Style TargetType="Button" BasedOn="{StaticResource BaseBtnStyle}">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="TextBox" BasedOn="{StaticResource BaseTBStyle}"/>
+    </Page.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid Name="DGTariff" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Код тарифа" Binding="{Binding Код_тарифа}"/>
+                <DataGridTextColumn Header="Тип учёта" Binding="{Binding Тип_учёта}"/>
+                <DataGridTextColumn Header="Группа населения" Binding="{Binding Группа_населения}"/>
+            </DataGrid.Columns>
+
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" ItemsSource="{Binding Ставка}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Код ставки" Binding="{Binding Код_ставки}"/>
+                            <DataGridTextColumn Header="Код зоны суток" Binding="{Binding Код_зоны_суток}"/>
+                            <DataGridTextColumn Header="Название зоны суток" 
+                                                Binding="{Binding Зона_суток.Название_зоны_суток}"/>
+                            <DataGridTextColumn Header="Временной период" Binding="{Binding Зона_суток}"/>
+                            <DataGridTextColumn Header="Цена за кВт час" Binding="{Binding Цена_за_кВт_час}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="MIAdd" Header="Добавить" Click="MIAdd_Click"/>
+                    <MenuItem x:Name="MIChange" Header="Изменить" Click="MIChange_Click"/>
+                    <MenuItem x:Name="MIDelete" Header="Удалить" Click="MIDelete_Click"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+
+        <StackPanel x:Name="SpSearch" Grid.Column="1" Margin="10 0 0 0">
+            <TextBlock Text="Фильтрация по типу учёта" Padding="5" TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center"/>
+            <CheckBox Content="Однотарифный"/>
+            <CheckBox Content="Двухтарифный"/>
+            <CheckBox Content="Многотарифный"/>
+            <Label Content="Поиск по коду тарифа" HorizontalContentAlignment="Center"/>
+            <TextBox x:Name="TBSearchLine"/>
+            <Button x:Name="BtnSearch" Content="Поиск" Click="BtnSearch_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

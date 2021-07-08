@@ -1,0 +1,26 @@
+﻿<Window x:Class="PrPract.Authorization"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PrPract"
+        mc:Ignorable="d"
+        Title="Авторизация" Height="400" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style TargetType="TextBox" BasedOn="{StaticResource BaseTBStyle}"/>
+        <Style TargetType="Button" BasedOn="{StaticResource BaseBtnStyle}">
+            <Setter Property="IsDefault" Value="True"/>
+        </Style>
+    </Window.Resources>
+
+    <StackPanel VerticalAlignment="Center" Name="SPAuth">
+        <Image Height="85" Width="300" Source="/Images/TitleImage.png" RenderOptions.BitmapScalingMode="Fant"/>
+        <Label Content="Вход в систему" HorizontalAlignment="Center" Grid.ColumnSpan="2" FontSize="18"/>
+        <Separator Margin="0 10 0 0" Width="200" Background="{StaticResource BorderColor}"/>
+        <Label Content="Логин" HorizontalAlignment="Center" Margin="0 10 0 0"/>
+        <TextBox HorizontalAlignment="Center" x:Name="TBLogin" Width="200" Margin="0 1"/>
+        <Label Content="Пароль" HorizontalAlignment="Center" Margin="0 5 0 0"/>
+        <PasswordBox HorizontalAlignment="Center" x:Name="PBPassword" Width="200"  Margin="0 1"/>
+        <Button Grid.Row="2" Grid.ColumnSpan="2" Margin="0 20 0 0" Content="Войти" Width="100" Click="LogIn_Click"/>
+    </StackPanel>
+</Window>

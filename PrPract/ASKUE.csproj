@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{45DDBCE5-D289-497E-B0D0-BAF551563B9C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PrPract</RootNamespace>
+    <AssemblyName>PrPract</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Images\IconImage.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Pages\Edit\EditAbonent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Edit\EditActs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Edit\EditStat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Edit\EditTariff.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Edit\EditUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Info\InfoAbonent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Info\InfoActs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Info\InfoStat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Info\InfoTariff.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Info\InfoUsers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Authorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\ExcelHelper.cs" />
+    <Compile Include="Classes\WordHelper.cs" />
+    <Compile Include="Database\FullAddress.cs" />
+    <Compile Include="Database\FullFIO.cs" />
+    <Compile Include="Database\FullTariff.cs" />
+    <Compile Include="Database\TimesZoneDay.cs" />
+    <Compile Include="Database\AskueModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AskueModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\AskueModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\AskueModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AskueModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Абонент.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Адрес.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Акт_снятия_показаний_приборов_учета.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Временной_период.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Данные_о_жилой_площади.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Доверенность.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Договор_энергоснабжения.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Зона_суток.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Контактные_данные.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Личные_данные.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Паспорт.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ПоискПоказанийАбонента_Result.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ПоискПоследнегоСнятияПоказаний_Result.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ПоискСтавокАбонента_Result.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Показания_прибора_учета.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Пользователь.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Представитель_компании.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ПредставлениеАбонент.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ПредставлениеАкты.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ПредставлениеДоговоры.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ПредставлениеЗоны_суток.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ПредставлениеКонт_д.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ПредставлениеЛичн_д.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ПредставлениеПаспорт.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ПредставлениеПредставитель_компании.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ПредставлениеСтавки.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ПредставлениеТарифы.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Прибор_учёта.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Ставка.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Тариф.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ФильтрацияАбонентовПоУлице_Result.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ФильтрацияПриборовУчёта_Result.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ФильтрацияТарифов_Result.cs">
+      <DependentUpon>AskueModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Edit\EditAbonent.xaml.cs">
+      <DependentUpon>EditAbonent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Edit\EditActs.xaml.cs">
+      <DependentUpon>EditActs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Edit\EditStat.xaml.cs">
+      <DependentUpon>EditStat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Edit\EditTariff.xaml.cs">
+      <DependentUpon>EditTariff.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Edit\EditUser.xaml.cs">
+      <DependentUpon>EditUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Info\InfoAbonent.xaml.cs">
+      <DependentUpon>InfoAbonent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Info\InfoActs.xaml.cs">
+      <DependentUpon>InfoActs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Info\InfoStat.xaml.cs">
+      <DependentUpon>InfoStat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Info\InfoTariff.xaml.cs">
+      <DependentUpon>InfoTariff.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Info\InfoUsers.xaml.cs">
+      <DependentUpon>InfoUsers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Authorization.xaml.cs">
+      <DependentUpon>Authorization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\DataChecker.cs" />
+    <Compile Include="Windows\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="Database\AskueModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AskueModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Database\AskueModel.edmx.diagram">
+      <DependentUpon>AskueModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\TitleImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\IconImage.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="IconImage.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\AskueModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AskueModel.edmx</DependentUpon>
+      <LastGenOutput>AskueModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Database\AskueModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AskueModel.edmx</DependentUpon>
+      <LastGenOutput>AskueModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

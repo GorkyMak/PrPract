@@ -1,0 +1,2906 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище АСКУЭModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Абонент">
+          <Key>
+            <PropertyRef Name="Код_абонета" />
+          </Key>
+          <Property Name="Код_абонета" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Код_контактных_данных" Type="int" Nullable="false" />
+          <Property Name="Код_личных_данных" Type="int" Nullable="false" />
+          <Property Name="Код_данных_о_жилой_площади" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Адрес">
+          <Key>
+            <PropertyRef Name="Код_адреса" />
+          </Key>
+          <Property Name="Код_адреса" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Улица" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Дом_влад." Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="Квартира" Type="int" />
+        </EntityType>
+        <EntityType Name="Акт_снятия_показаний_приборов_учета">
+          <Key>
+            <PropertyRef Name="Код_акта_снятия_показаний_приборов_учета" />
+          </Key>
+          <Property Name="Код_акта_снятия_показаний_приборов_учета" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Код_показаний_прибора_учета" Type="int" Nullable="false" />
+          <Property Name="Дата_сдачи_акта" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Временной_период">
+          <Key>
+            <PropertyRef Name="Код_временного_периода" />
+          </Key>
+          <Property Name="Код_временного_периода" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Код_зоны_суток" Type="int" Nullable="false" />
+          <Property Name="Начало_временного_периода" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Конец_временного_периода" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Данные_о_жилой_площади">
+          <Key>
+            <PropertyRef Name="Код_данных_о_жилой_площади" />
+          </Key>
+          <Property Name="Код_данных_о_жилой_площади" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Площадь_жилового_дома_кв.м." Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Кол-во_комнат" Type="int" Nullable="false" />
+          <Property Name="Кол-во_проживающих_граждан" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Доверенность">
+          <Key>
+            <PropertyRef Name="Номер_доверенности" />
+          </Key>
+          <Property Name="Номер_доверенности" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="Дата_выдачи_доверенности" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Договор_энергоснабжения">
+          <Key>
+            <PropertyRef Name="Номер_договора" />
+          </Key>
+          <Property Name="Номер_договора" Type="int" Nullable="false" />
+          <Property Name="Номер_прибора_учета" Type="int" Nullable="false" />
+          <Property Name="Код_абонета" Type="int" Nullable="false" />
+          <Property Name="Код_представителя_компании" Type="int" Nullable="false" />
+          <Property Name="Код_тарифа" Type="int" Nullable="false" />
+          <Property Name="Дата_заключения_договора" Type="datetime" Nullable="false" />
+          <Property Name="Особые_условия" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="Зона_суток">
+          <Key>
+            <PropertyRef Name="Код_зоны_суток" />
+          </Key>
+          <Property Name="Код_зоны_суток" Type="int" Nullable="false" />
+          <Property Name="Название_зоны_суток" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Контактные_данные">
+          <Key>
+            <PropertyRef Name="Код_контактных_данных" />
+          </Key>
+          <Property Name="Код_контактных_данных" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Код_адреса" Type="int" Nullable="false" />
+          <Property Name="Телефон" Type="nvarchar" MaxLength="14" />
+          <Property Name="Мобильный_Телефон" Type="nvarchar" MaxLength="16" />
+          <Property Name="Электронная_почта" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Личные_данные">
+          <Key>
+            <PropertyRef Name="Код_личных_данных" />
+          </Key>
+          <Property Name="Код_личных_данных" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Серия_паспорта" Type="int" Nullable="false" />
+          <Property Name="Номер_паспорта" Type="int" Nullable="false" />
+          <Property Name="Фамилия" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Имя" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Отчество" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Дата_рождения" Type="datetime" Nullable="false" />
+          <Property Name="Пол" Type="nvarchar" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Паспорт">
+          <Key>
+            <PropertyRef Name="Серия_паспорта" />
+            <PropertyRef Name="Номер_паспорта" />
+          </Key>
+          <Property Name="Серия_паспорта" Type="int" Nullable="false" />
+          <Property Name="Номер_паспорта" Type="int" Nullable="false" />
+          <Property Name="Код_адреса" Type="int" Nullable="false" />
+          <Property Name="Кем_выдан" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Показания_прибора_учета">
+          <Key>
+            <PropertyRef Name="Код_показаний_прибора_учета" />
+          </Key>
+          <Property Name="Код_показаний_прибора_учета" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Номер_договора" Type="int" Nullable="false" />
+          <Property Name="Предыдущие_показания" Type="int" Nullable="false" />
+          <Property Name="Текущие_показания" Type="int" Nullable="false" />
+          <Property Name="Дата_снятия_показаний" Type="datetime" Nullable="false" />
+          <Property Name="Конечные_показания" Type="bit" Nullable="false" />
+          <Property Name="Расход" Type="int" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Пользователь">
+          <Key>
+            <PropertyRef Name="Код_пользователя" />
+          </Key>
+          <Property Name="Код_пользователя" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Логин" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Пароль" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Роль" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Представитель_компании">
+          <Key>
+            <PropertyRef Name="Код_представителя_компании" />
+          </Key>
+          <Property Name="Код_представителя_компании" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Код_личных_данных" Type="int" Nullable="false" />
+          <Property Name="Номер_доверенности" Type="nvarchar" MaxLength="9" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Прибор_учёта">
+          <Key>
+            <PropertyRef Name="Номер_прибора_учета" />
+          </Key>
+          <Property Name="Номер_прибора_учета" Type="int" Nullable="false" />
+          <Property Name="Марка" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Тип" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Расчетный_коэффициент" Type="int" Nullable="false" />
+          <Property Name="Дата_установки_введения_в_эксплуатацию__" Type="datetime" Nullable="false" />
+          <Property Name="Место_установки" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ставка">
+          <Key>
+            <PropertyRef Name="Код_ставки" />
+          </Key>
+          <Property Name="Код_ставки" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Код_тарифа" Type="int" Nullable="false" />
+          <Property Name="Код_зоны_суток" Type="int" />
+          <Property Name="Цена_за_кВт_час" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Тариф">
+          <Key>
+            <PropertyRef Name="Код_тарифа" />
+          </Key>
+          <Property Name="Код_тарифа" Type="int" Nullable="false" />
+          <Property Name="Тип_учёта" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Группа_населения" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "АСКУЭ.dbo.ПредставлениеАбонент" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ПредставлениеАбонент">
+          <Key>
+            <PropertyRef Name="Код_абонета" />
+          </Key>
+          <Property Name="Код_абонета" Type="int" Nullable="false" />
+          <Property Name="Серия_паспорта" Type="int" />
+          <Property Name="Номер_паспорта" Type="int" />
+          <Property Name="Фамилия" Type="nvarchar" MaxLength="128" />
+          <Property Name="Имя" Type="nvarchar" MaxLength="128" />
+          <Property Name="Отчество" Type="nvarchar" MaxLength="128" />
+          <Property Name="Дата_рождения" Type="datetime" />
+          <Property Name="Пол" Type="nvarchar" MaxLength="8" />
+          <Property Name="Кем_выдан" Type="nvarchar" MaxLength="256" />
+          <Property Name="Телефон" Type="nvarchar" MaxLength="14" />
+          <Property Name="Мобильный_Телефон" Type="nvarchar" MaxLength="16" />
+          <Property Name="Электронная_почта" Type="nvarchar" MaxLength="128" />
+          <Property Name="Улица" Type="nvarchar" MaxLength="128" />
+          <Property Name="Дом_влад." Type="nvarchar" MaxLength="8" />
+          <Property Name="Квартира" Type="int" />
+          <Property Name="Площадь_жилового_дома_кв.м." Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Кол-во_комнат" Type="int" />
+          <Property Name="Кол-во_проживающих_граждан" Type="int" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "АСКУЭ.dbo.ПредставлениеАкты" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ПредставлениеАкты">
+          <Key>
+            <PropertyRef Name="Код_акта_снятия_показаний_приборов_учета" />
+            <PropertyRef Name="Дата_сдачи_акта" />
+          </Key>
+          <Property Name="Код_акта_снятия_показаний_приборов_учета" Type="int" Nullable="false" />
+          <Property Name="Номер_договора" Type="int" />
+          <Property Name="Предыдущие_показания" Type="int" />
+          <Property Name="Текущие_показания" Type="int" />
+          <Property Name="Дата_снятия_показаний" Type="datetime" />
+          <Property Name="Расход" Type="int" />
+          <Property Name="Дата_сдачи_акта" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "АСКУЭ.dbo.ПредставлениеДоговоры" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ПредставлениеДоговоры">
+          <Key>
+            <PropertyRef Name="Номер_договора" />
+            <PropertyRef Name="Дата_заключения_договора" />
+            <PropertyRef Name="Код_тарифа" />
+          </Key>
+          <Property Name="Номер_договора" Type="int" Nullable="false" />
+          <Property Name="Дата_заключения_договора" Type="datetime" Nullable="false" />
+          <Property Name="Особые_условия" Type="nvarchar" MaxLength="256" />
+          <Property Name="Код_тарифа" Type="int" Nullable="false" />
+          <Property Name="Номер_прибора_учета" Type="int" />
+          <Property Name="Марка" Type="nvarchar" MaxLength="128" />
+          <Property Name="Тип" Type="nvarchar" MaxLength="128" />
+          <Property Name="Расчетный_коэффициент" Type="int" />
+          <Property Name="Дата_установки_введения_в_эксплуатацию__" Type="datetime" />
+          <Property Name="Место_установки" Type="nvarchar" MaxLength="128" />
+          <Property Name="Код_абонета" Type="int" />
+          <Property Name="Серия_паспорта" Type="int" />
+          <Property Name="Номер_паспорта" Type="int" />
+          <Property Name="Фамилия" Type="nvarchar" MaxLength="128" />
+          <Property Name="Имя" Type="nvarchar" MaxLength="128" />
+          <Property Name="Отчество" Type="nvarchar" MaxLength="128" />
+          <Property Name="Дата_рождения" Type="datetime" />
+          <Property Name="Пол" Type="nvarchar" MaxLength="8" />
+          <Property Name="Кем_выдан" Type="nvarchar" MaxLength="256" />
+          <Property Name="Телефон" Type="nvarchar" MaxLength="14" />
+          <Property Name="Мобильный_Телефон" Type="nvarchar" MaxLength="16" />
+          <Property Name="Электронная_почта" Type="nvarchar" MaxLength="128" />
+          <Property Name="Улица" Type="nvarchar" MaxLength="128" />
+          <Property Name="Дом_влад." Type="nvarchar" MaxLength="8" />
+          <Property Name="Квартира" Type="int" />
+          <Property Name="Площадь_жилового_дома_кв.м." Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Кол-во_комнат" Type="int" />
+          <Property Name="Кол-во_проживающих_граждан" Type="int" />
+          <Property Name="Код_представителя_компании" Type="int" />
+          <Property Name="Фамилия представителя" Type="nvarchar" MaxLength="128" />
+          <Property Name="Имя представителя" Type="nvarchar" MaxLength="128" />
+          <Property Name="Отчество представителя" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "АСКУЭ.dbo.ПредставлениеЗоны_суток" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ПредставлениеЗоны_суток">
+          <Key>
+            <PropertyRef Name="Код_зоны_суток" />
+            <PropertyRef Name="Название_зоны_суток" />
+            <PropertyRef Name="Начало_временного_периода" />
+            <PropertyRef Name="Конец_временного_периода" />
+          </Key>
+          <Property Name="Код_зоны_суток" Type="int" Nullable="false" />
+          <Property Name="Название_зоны_суток" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Начало_временного_периода" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Конец_временного_периода" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "АСКУЭ.dbo.ПредставлениеКонт_д" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ПредставлениеКонт_д">
+          <Key>
+            <PropertyRef Name="Код_контактных_данных" />
+          </Key>
+          <Property Name="Код_контактных_данных" Type="int" Nullable="false" />
+          <Property Name="Телефон" Type="nvarchar" MaxLength="14" />
+          <Property Name="Мобильный_Телефон" Type="nvarchar" MaxLength="16" />
+          <Property Name="Электронная_почта" Type="nvarchar" MaxLength="128" />
+          <Property Name="Улица" Type="nvarchar" MaxLength="128" />
+          <Property Name="Дом_влад." Type="nvarchar" MaxLength="8" />
+          <Property Name="Квартира" Type="int" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "АСКУЭ.dbo.ПредставлениеЛичн_д" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ПредставлениеЛичн_д">
+          <Key>
+            <PropertyRef Name="Код_личных_данных" />
+            <PropertyRef Name="Фамилия" />
+            <PropertyRef Name="Имя" />
+            <PropertyRef Name="Отчество" />
+            <PropertyRef Name="Дата_рождения" />
+            <PropertyRef Name="Пол" />
+          </Key>
+          <Property Name="Код_личных_данных" Type="int" Nullable="false" />
+          <Property Name="Серия_паспорта" Type="int" />
+          <Property Name="Номер_паспорта" Type="int" />
+          <Property Name="Фамилия" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Имя" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Отчество" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Дата_рождения" Type="datetime" Nullable="false" />
+          <Property Name="Пол" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="Кем_выдан" Type="nvarchar" MaxLength="256" />
+          <Property Name="Улица" Type="nvarchar" MaxLength="128" />
+          <Property Name="Дом_влад." Type="nvarchar" MaxLength="8" />
+          <Property Name="Квартира" Type="int" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "АСКУЭ.dbo.ПредставлениеПаспорт" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ПредставлениеПаспорт">
+          <Key>
+            <PropertyRef Name="Серия_паспорта" />
+            <PropertyRef Name="Номер_паспорта" />
+            <PropertyRef Name="Кем_выдан" />
+          </Key>
+          <Property Name="Серия_паспорта" Type="int" Nullable="false" />
+          <Property Name="Номер_паспорта" Type="int" Nullable="false" />
+          <Property Name="Кем_выдан" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Улица" Type="nvarchar" MaxLength="128" />
+          <Property Name="Дом_влад." Type="nvarchar" MaxLength="8" />
+          <Property Name="Квартира" Type="int" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "АСКУЭ.dbo.ПредставлениеПредставитель_компании" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ПредставлениеПредставитель_компании">
+          <Key>
+            <PropertyRef Name="Код_представителя_компании" />
+          </Key>
+          <Property Name="Код_представителя_компании" Type="int" Nullable="false" />
+          <Property Name="Серия_паспорта" Type="int" />
+          <Property Name="Номер_паспорта" Type="int" />
+          <Property Name="Номер_доверенности" Type="nvarchar" MaxLength="9" />
+          <Property Name="Дата_выдачи_доверенности" Type="datetime" />
+          <Property Name="Фамилия" Type="nvarchar" MaxLength="128" />
+          <Property Name="Имя" Type="nvarchar" MaxLength="128" />
+          <Property Name="Отчество" Type="nvarchar" MaxLength="128" />
+          <Property Name="Дата_рождения" Type="datetime" />
+          <Property Name="Пол" Type="nvarchar" MaxLength="8" />
+          <Property Name="Кем_выдан" Type="nvarchar" MaxLength="256" />
+          <Property Name="Улица" Type="nvarchar" MaxLength="128" />
+          <Property Name="Дом_влад." Type="nvarchar" MaxLength="8" />
+          <Property Name="Квартира" Type="int" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "АСКУЭ.dbo.ПредставлениеСтавки" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ПредставлениеСтавки">
+          <Key>
+            <PropertyRef Name="Код_тарифа" />
+            <PropertyRef Name="Цена_за_кВт_час" />
+          </Key>
+          <Property Name="Код_тарифа" Type="int" Nullable="false" />
+          <Property Name="Название_зоны_суток" Type="nvarchar" MaxLength="128" />
+          <Property Name="Начало_временного_периода" Type="time" Precision="7" />
+          <Property Name="Конец_временного_периода" Type="time" Precision="7" />
+          <Property Name="Цена_за_кВт_час" Type="money" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "АСКУЭ.dbo.ПредставлениеТарифы" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ПредставлениеТарифы">
+          <Key>
+            <PropertyRef Name="Код_тарифа" />
+            <PropertyRef Name="Тип_учёта" />
+            <PropertyRef Name="Группа_населения" />
+          </Key>
+          <Property Name="Код_тарифа" Type="int" Nullable="false" />
+          <Property Name="Тип_учёта" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Группа_населения" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Название_зоны_суток" Type="nvarchar" MaxLength="128" />
+          <Property Name="Начало_временного_периода" Type="time" Precision="7" />
+          <Property Name="Конец_временного_периода" Type="time" Precision="7" />
+          <Property Name="Цена_за_кВт_час" Type="money" />
+        </EntityType>
+        <Association Name="FK__Абонент__Код_дан__5535A963">
+          <End Role="Данные_о_жилой_площади" Type="Self.Данные_о_жилой_площади" Multiplicity="1" />
+          <End Role="Абонент" Type="Self.Абонент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Данные_о_жилой_площади">
+              <PropertyRef Name="Код_данных_о_жилой_площади" />
+            </Principal>
+            <Dependent Role="Абонент">
+              <PropertyRef Name="Код_данных_о_жилой_площади" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Абонент__Код_кон__4D94879B">
+          <End Role="Контактные_данные" Type="Self.Контактные_данные" Multiplicity="1" />
+          <End Role="Абонент" Type="Self.Абонент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Контактные_данные">
+              <PropertyRef Name="Код_контактных_данных" />
+            </Principal>
+            <Dependent Role="Абонент">
+              <PropertyRef Name="Код_контактных_данных" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Абонент__Код_лич__4BAC3F29">
+          <End Role="Личные_данные" Type="Self.Личные_данные" Multiplicity="1" />
+          <End Role="Абонент" Type="Self.Абонент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Личные_данные">
+              <PropertyRef Name="Код_личных_данных" />
+            </Principal>
+            <Dependent Role="Абонент">
+              <PropertyRef Name="Код_личных_данных" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Акт_сняти__Код_п__5070F446">
+          <End Role="Показания_прибора_учета" Type="Self.Показания_прибора_учета" Multiplicity="1" />
+          <End Role="Акт_снятия_показаний_приборов_учета" Type="Self.Акт_снятия_показаний_приборов_учета" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Показания_прибора_учета">
+              <PropertyRef Name="Код_показаний_прибора_учета" />
+            </Principal>
+            <Dependent Role="Акт_снятия_показаний_приборов_учета">
+              <PropertyRef Name="Код_показаний_прибора_учета" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Временной__Код_з__571DF1D5">
+          <End Role="Зона_суток" Type="Self.Зона_суток" Multiplicity="1" />
+          <End Role="Временной_период" Type="Self.Временной_период" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Зона_суток">
+              <PropertyRef Name="Код_зоны_суток" />
+            </Principal>
+            <Dependent Role="Временной_период">
+              <PropertyRef Name="Код_зоны_суток" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Договор_э__Код_а__48CFD27E">
+          <End Role="Абонент" Type="Self.Абонент" Multiplicity="1" />
+          <End Role="Договор_энергоснабжения" Type="Self.Договор_энергоснабжения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Абонент">
+              <PropertyRef Name="Код_абонета" />
+            </Principal>
+            <Dependent Role="Договор_энергоснабжения">
+              <PropertyRef Name="Код_абонета" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Договор_э__Код_п__5441852A">
+          <End Role="Представитель_компании" Type="Self.Представитель_компании" Multiplicity="1" />
+          <End Role="Договор_энергоснабжения" Type="Self.Договор_энергоснабжения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Представитель_компании">
+              <PropertyRef Name="Код_представителя_компании" />
+            </Principal>
+            <Dependent Role="Договор_энергоснабжения">
+              <PropertyRef Name="Код_представителя_компании" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Договор_э__Код_т__4AB81AF0">
+          <End Role="Тариф" Type="Self.Тариф" Multiplicity="1" />
+          <End Role="Договор_энергоснабжения" Type="Self.Договор_энергоснабжения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Тариф">
+              <PropertyRef Name="Код_тарифа" />
+            </Principal>
+            <Dependent Role="Договор_энергоснабжения">
+              <PropertyRef Name="Код_тарифа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Договор_э__Номер__5165187F">
+          <End Role="Прибор_учёта" Type="Self.Прибор_учёта" Multiplicity="1" />
+          <End Role="Договор_энергоснабжения" Type="Self.Договор_энергоснабжения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Прибор_учёта">
+              <PropertyRef Name="Номер_прибора_учета" />
+            </Principal>
+            <Dependent Role="Договор_энергоснабжения">
+              <PropertyRef Name="Номер_прибора_учета" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Контактны__Код_а__4E88ABD4">
+          <End Role="Адрес" Type="Self.Адрес" Multiplicity="1" />
+          <End Role="Контактные_данные" Type="Self.Контактные_данные" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Адрес">
+              <PropertyRef Name="Код_адреса" />
+            </Principal>
+            <Dependent Role="Контактные_данные">
+              <PropertyRef Name="Код_адреса" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Личные_данные__534D60F1">
+          <End Role="Паспорт" Type="Self.Паспорт" Multiplicity="1" />
+          <End Role="Личные_данные" Type="Self.Личные_данные" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Паспорт">
+              <PropertyRef Name="Серия_паспорта" />
+              <PropertyRef Name="Номер_паспорта" />
+            </Principal>
+            <Dependent Role="Личные_данные">
+              <PropertyRef Name="Серия_паспорта" />
+              <PropertyRef Name="Номер_паспорта" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Паспорт__Код_адр__4F7CD00D">
+          <End Role="Адрес" Type="Self.Адрес" Multiplicity="1" />
+          <End Role="Паспорт" Type="Self.Паспорт" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Адрес">
+              <PropertyRef Name="Код_адреса" />
+            </Principal>
+            <Dependent Role="Паспорт">
+              <PropertyRef Name="Код_адреса" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Показания__Номер__52593CB8">
+          <End Role="Договор_энергоснабжения" Type="Self.Договор_энергоснабжения" Multiplicity="1" />
+          <End Role="Показания_прибора_учета" Type="Self.Показания_прибора_учета" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Договор_энергоснабжения">
+              <PropertyRef Name="Номер_договора" />
+            </Principal>
+            <Dependent Role="Показания_прибора_учета">
+              <PropertyRef Name="Номер_договора" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Представи__Код_л__4CA06362">
+          <End Role="Личные_данные" Type="Self.Личные_данные" Multiplicity="1" />
+          <End Role="Представитель_компании" Type="Self.Представитель_компании" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Личные_данные">
+              <PropertyRef Name="Код_личных_данных" />
+            </Principal>
+            <Dependent Role="Представитель_компании">
+              <PropertyRef Name="Код_личных_данных" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Представи__Номер__5629CD9C">
+          <End Role="Доверенность" Type="Self.Доверенность" Multiplicity="1" />
+          <End Role="Представитель_компании" Type="Self.Представитель_компании" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Доверенность">
+              <PropertyRef Name="Номер_доверенности" />
+            </Principal>
+            <Dependent Role="Представитель_компании">
+              <PropertyRef Name="Номер_доверенности" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ставка__Код_зоны__5812160E">
+          <End Role="Зона_суток" Type="Self.Зона_суток" Multiplicity="0..1" />
+          <End Role="Ставка" Type="Self.Ставка" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Зона_суток">
+              <PropertyRef Name="Код_зоны_суток" />
+            </Principal>
+            <Dependent Role="Ставка">
+              <PropertyRef Name="Код_зоны_суток" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ставка__Код_тари__49C3F6B7">
+          <End Role="Тариф" Type="Self.Тариф" Multiplicity="1" />
+          <End Role="Ставка" Type="Self.Ставка" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Тариф">
+              <PropertyRef Name="Код_тарифа" />
+            </Principal>
+            <Dependent Role="Ставка">
+              <PropertyRef Name="Код_тарифа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="АвтоРасход" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="prevStat" Type="int" Mode="In" />
+          <Parameter Name="currStat" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ДобавлениеАбонент" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="idContData" Type="int" Mode="In" />
+          <Parameter Name="idPersData" Type="int" Mode="In" />
+          <Parameter Name="idHouseData" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ДобавлениеАдрес" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Street" Type="nvarchar" Mode="In" />
+          <Parameter Name="Home" Type="nvarchar" Mode="In" />
+          <Parameter Name="Apart" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ДобавлениеАкт_снятия_показаний_приборов_учета" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idStatDevMeter" Type="int" Mode="In" />
+          <Parameter Name="date" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ДобавлениеВр_пер" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idNameZoneDay" Type="int" Mode="In" />
+          <Parameter Name="BegTime" Type="time" Mode="In" />
+          <Parameter Name="EndTime" Type="time" Mode="In" />
+        </Function>
+        <Function Name="ДобавлениеДанные_о_жилой_площади" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="areaLiveHouse" Type="decimal" Mode="In" />
+          <Parameter Name="countRoom" Type="int" Mode="In" />
+          <Parameter Name="countLivePeople" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ДобавлениеДоверенность" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="nvarchar" Mode="In" />
+          <Parameter Name="date" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ДобавлениеДоговор_энергоснабжения" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="numMeterDev" Type="int" Mode="In" />
+          <Parameter Name="idAbonent" Type="int" Mode="In" />
+          <Parameter Name="idTariff" Type="int" Mode="In" />
+          <Parameter Name="idPresentComp" Type="int" Mode="In" />
+          <Parameter Name="date" Type="datetime" Mode="In" />
+          <Parameter Name="specIf" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ДобавлениеЗона_с" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ДобавлениеКонтактные_данные" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idAddress" Type="int" Mode="In" />
+          <Parameter Name="mobPhone" Type="nvarchar" Mode="In" />
+          <Parameter Name="phone" Type="nvarchar" Mode="In" />
+          <Parameter Name="email" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ДобавлениеЛичные_данные" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ln" Type="nvarchar" Mode="In" />
+          <Parameter Name="fn" Type="nvarchar" Mode="In" />
+          <Parameter Name="patronomyc" Type="nvarchar" Mode="In" />
+          <Parameter Name="gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="birthday" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ДобавлениеПаспорт" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="seria" Type="int" Mode="In" />
+          <Parameter Name="num" Type="int" Mode="In" />
+          <Parameter Name="whoGive" Type="nvarchar" Mode="In" />
+          <Parameter Name="idAddress" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ДобавлениеПоказания_прибора_учёта" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDContract" Type="int" Mode="In" />
+          <Parameter Name="PrevStat" Type="int" Mode="In" />
+          <Parameter Name="CurrStat" Type="int" Mode="In" />
+          <Parameter Name="Date" Type="datetime" Mode="In" />
+          <Parameter Name="endStat" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="ДобавлениеПользователь" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="login" Type="nvarchar" Mode="In" />
+          <Parameter Name="password" Type="nvarchar" Mode="In" />
+          <Parameter Name="role" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ДобавлениеПредставитель_компании" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPersData" Type="int" Mode="In" />
+          <Parameter Name="numDov" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ДобавлениеПрибор_учета" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="marka" Type="nvarchar" Mode="In" />
+          <Parameter Name="type" Type="nvarchar" Mode="In" />
+          <Parameter Name="CalcCoeff" Type="int" Mode="In" />
+          <Parameter Name="dateInstall" Type="datetime" Mode="In" />
+          <Parameter Name="destInstall" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ДобавлениеСтавка" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idTariff" Type="nvarchar" Mode="In" />
+          <Parameter Name="idZoneDay" Type="nvarchar" Mode="In" />
+          <Parameter Name="cost" Type="money" Mode="In" />
+        </Function>
+        <Function Name="ДобавлениеТариф" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="typeMeter" Type="nvarchar" Mode="In" />
+          <Parameter Name="groupConsumer" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ИзменениеАбонент" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="idContData" Type="int" Mode="In" />
+          <Parameter Name="idPersData" Type="int" Mode="In" />
+          <Parameter Name="idHouseData" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ИзменениеАдрес" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="Street" Type="nvarchar" Mode="In" />
+          <Parameter Name="Home" Type="nvarchar" Mode="In" />
+          <Parameter Name="Apart" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ИзменениеАкт_снятия_показаний_приборов_учета" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="idStatDevMeter" Type="int" Mode="In" />
+          <Parameter Name="date" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ИзменениеВр_пер" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="idNameZoneDay" Type="int" Mode="In" />
+          <Parameter Name="BegTime" Type="time" Mode="In" />
+          <Parameter Name="EndTime" Type="time" Mode="In" />
+        </Function>
+        <Function Name="ИзменениеДанные_о_жилой_площади" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="areaLiveHouse" Type="decimal" Mode="In" />
+          <Parameter Name="countRoom" Type="int" Mode="In" />
+          <Parameter Name="countLivePeople" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ИзменениеДоверенность" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="nvarchar" Mode="In" />
+          <Parameter Name="date" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ИзменениеДоговор_энергоснабжения" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="numMeterDev" Type="int" Mode="In" />
+          <Parameter Name="idAbonent" Type="int" Mode="In" />
+          <Parameter Name="idTariff" Type="int" Mode="In" />
+          <Parameter Name="idPresentComp" Type="int" Mode="In" />
+          <Parameter Name="date" Type="datetime" Mode="In" />
+          <Parameter Name="specIf" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ИзменениеЗона_с" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ИзменениеКонтактные_данные" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="idAddress" Type="int" Mode="In" />
+          <Parameter Name="mobPhone" Type="nvarchar" Mode="In" />
+          <Parameter Name="phone" Type="nvarchar" Mode="In" />
+          <Parameter Name="email" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ИзменениеЛичные_данные" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="ln" Type="nvarchar" Mode="In" />
+          <Parameter Name="fn" Type="nvarchar" Mode="In" />
+          <Parameter Name="patronomyc" Type="nvarchar" Mode="In" />
+          <Parameter Name="gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="birthday" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ИзменениеПаспорт" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="seria" Type="int" Mode="In" />
+          <Parameter Name="num" Type="int" Mode="In" />
+          <Parameter Name="whoGive" Type="nvarchar" Mode="In" />
+          <Parameter Name="idAddress" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ИзменениеПоказания_прибора_учёта" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="IDContract" Type="int" Mode="In" />
+          <Parameter Name="PrevStat" Type="int" Mode="In" />
+          <Parameter Name="CurrStat" Type="int" Mode="In" />
+          <Parameter Name="Date" Type="datetime" Mode="In" />
+          <Parameter Name="endStat" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="ИзменениеПользователь" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="login" Type="nvarchar" Mode="In" />
+          <Parameter Name="password" Type="nvarchar" Mode="In" />
+          <Parameter Name="role" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ИзменениеПредставитель_компании" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="idPersData" Type="int" Mode="In" />
+          <Parameter Name="numDov" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ИзменениеПрибор_учета" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="marka" Type="nvarchar" Mode="In" />
+          <Parameter Name="type" Type="nvarchar" Mode="In" />
+          <Parameter Name="CalcCoeff" Type="int" Mode="In" />
+          <Parameter Name="dateInstall" Type="datetime" Mode="In" />
+          <Parameter Name="destInstall" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ИзменениеСтавка" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="idTariff" Type="nvarchar" Mode="In" />
+          <Parameter Name="idZoneDay" Type="nvarchar" Mode="In" />
+          <Parameter Name="cost" Type="money" Mode="In" />
+        </Function>
+        <Function Name="ИзменениеТариф" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="typeMeter" Type="nvarchar" Mode="In" />
+          <Parameter Name="groupConsumer" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ПоискПоказанийАбонента" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idContract" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Код_показаний_прибора_учета" Type="int" Nullable="false" />
+                <Property Name="Номер_договора" Type="int" Nullable="false" />
+                <Property Name="Предыдущие_показания" Type="int" Nullable="false" />
+                <Property Name="Текущие_показания" Type="int" Nullable="false" />
+                <Property Name="Дата_снятия_показаний" Type="datetime" Nullable="false" />
+                <Property Name="Конечные_показания" Type="bit" Nullable="false" />
+                <Property Name="Расход" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="ПоискПоследнегоСнятияПоказаний" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idContract" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Код_показаний_прибора_учета" Type="int" Nullable="false" />
+                <Property Name="Номер_договора" Type="int" Nullable="false" />
+                <Property Name="Предыдущие_показания" Type="int" Nullable="false" />
+                <Property Name="Текущие_показания" Type="int" Nullable="false" />
+                <Property Name="Дата_снятия_показаний" Type="datetime" Nullable="false" />
+                <Property Name="Конечные_показания" Type="bit" Nullable="false" />
+                <Property Name="Расход" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="ПоискСтавокАбонента" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idContract" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Код_ставки" Type="int" Nullable="false" />
+                <Property Name="Код_тарифа" Type="int" Nullable="false" />
+                <Property Name="Код_зоны_суток" Type="int" />
+                <Property Name="Цена_за_кВт_час" Type="money" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="ПолноеФИО" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="idContract" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ПолныйАдрес" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="idContract" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ПолныйПаспорт" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="idContract" Type="int" Mode="In" />
+        </Function>
+        <Function Name="УдалениеАкт_снятия_показаний_приборов_учета" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="УдалениеВр_пер" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="УдалениеПользователь" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ФильтрацияАбонентовПоУлице" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="street" Type="nvarchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Код_абонета" Type="int" Nullable="false" />
+                <Property Name="Серия_паспорта" Type="int" />
+                <Property Name="Номер_паспорта" Type="int" />
+                <Property Name="Фамилия" Type="nvarchar" MaxLength="128" />
+                <Property Name="Имя" Type="nvarchar" MaxLength="128" />
+                <Property Name="Отчество" Type="nvarchar" MaxLength="128" />
+                <Property Name="Дата_рождения" Type="datetime" />
+                <Property Name="Пол" Type="nvarchar" MaxLength="8" />
+                <Property Name="Кем_выдан" Type="nvarchar" MaxLength="256" />
+                <Property Name="Телефон" Type="nvarchar" MaxLength="14" />
+                <Property Name="Мобильный_Телефон" Type="nvarchar" MaxLength="16" />
+                <Property Name="Электронная_почта" Type="nvarchar" MaxLength="128" />
+                <Property Name="Улица" Type="nvarchar" MaxLength="128" />
+                <Property Name="Дом_влад." Type="nvarchar" MaxLength="8" />
+                <Property Name="Квартира" Type="int" />
+                <Property Name="Площадь_жилового_дома_кв.м." Type="decimal" Precision="18" Scale="0" />
+                <Property Name="Кол-во_комнат" Type="int" />
+                <Property Name="Кол-во_проживающих_граждан" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="ФильтрацияПриборовУчёта" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="marka" Type="nvarchar" Mode="In" />
+          <Parameter Name="type" Type="nvarchar" Mode="In" />
+          <Parameter Name="CalcCoeff" Type="int" Mode="In" />
+          <Parameter Name="period" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Номер_прибора_учета" Type="int" Nullable="false" />
+                <Property Name="Марка" Type="nvarchar" MaxLength="128" Nullable="false" />
+                <Property Name="Тип" Type="nvarchar" MaxLength="128" Nullable="false" />
+                <Property Name="Расчетный_коэффициент" Type="int" Nullable="false" />
+                <Property Name="Дата_установки_введения_в_эксплуатацию__" Type="datetime" Nullable="false" />
+                <Property Name="Место_установки" Type="nvarchar" MaxLength="128" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="ФильтрацияТарифов" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="typeMeter" Type="nvarchar" Mode="In" />
+          <Parameter Name="groupConsumer" Type="nvarchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Код_тарифа" Type="int" Nullable="false" />
+                <Property Name="Тип_учёта" Type="nvarchar" MaxLength="128" Nullable="false" />
+                <Property Name="Группа_населения" Type="nvarchar" MaxLength="128" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <EntityContainer Name="Хранилище АСКУЭModelContainer">
+          <EntitySet Name="Абонент" EntityType="Self.Абонент" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Адрес" EntityType="Self.Адрес" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Акт_снятия_показаний_приборов_учета" EntityType="Self.Акт_снятия_показаний_приборов_учета" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Временной_период" EntityType="Self.Временной_период" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Данные_о_жилой_площади" EntityType="Self.Данные_о_жилой_площади" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Доверенность" EntityType="Self.Доверенность" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Договор_энергоснабжения" EntityType="Self.Договор_энергоснабжения" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Зона_суток" EntityType="Self.Зона_суток" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Контактные_данные" EntityType="Self.Контактные_данные" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Личные_данные" EntityType="Self.Личные_данные" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Паспорт" EntityType="Self.Паспорт" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Показания_прибора_учета" EntityType="Self.Показания_прибора_учета" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Пользователь" EntityType="Self.Пользователь" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Представитель_компании" EntityType="Self.Представитель_компании" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Прибор_учёта" EntityType="Self.Прибор_учёта" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ставка" EntityType="Self.Ставка" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Тариф" EntityType="Self.Тариф" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ПредставлениеАбонент" EntityType="Self.ПредставлениеАбонент" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ПредставлениеАбонент].[Код_абонета] AS [Код_абонета], 
+    [ПредставлениеАбонент].[Серия_паспорта] AS [Серия_паспорта], 
+    [ПредставлениеАбонент].[Номер_паспорта] AS [Номер_паспорта], 
+    [ПредставлениеАбонент].[Фамилия] AS [Фамилия], 
+    [ПредставлениеАбонент].[Имя] AS [Имя], 
+    [ПредставлениеАбонент].[Отчество] AS [Отчество], 
+    [ПредставлениеАбонент].[Дата_рождения] AS [Дата_рождения], 
+    [ПредставлениеАбонент].[Пол] AS [Пол], 
+    [ПредставлениеАбонент].[Кем_выдан] AS [Кем_выдан], 
+    [ПредставлениеАбонент].[Телефон] AS [Телефон], 
+    [ПредставлениеАбонент].[Мобильный_Телефон] AS [Мобильный_Телефон], 
+    [ПредставлениеАбонент].[Электронная_почта] AS [Электронная_почта], 
+    [ПредставлениеАбонент].[Улица] AS [Улица], 
+    [ПредставлениеАбонент].[Дом_влад.] AS [Дом_влад.], 
+    [ПредставлениеАбонент].[Квартира] AS [Квартира], 
+    [ПредставлениеАбонент].[Площадь_жилового_дома_кв.м.] AS [Площадь_жилового_дома_кв.м.], 
+    [ПредставлениеАбонент].[Кол-во_комнат] AS [Кол-во_комнат], 
+    [ПредставлениеАбонент].[Кол-во_проживающих_граждан] AS [Кол-во_проживающих_граждан]
+    FROM [dbo].[ПредставлениеАбонент] AS [ПредставлениеАбонент]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ПредставлениеАкты" EntityType="Self.ПредставлениеАкты" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ПредставлениеАкты].[Код_акта_снятия_показаний_приборов_учета] AS [Код_акта_снятия_показаний_приборов_учета], 
+    [ПредставлениеАкты].[Номер_договора] AS [Номер_договора], 
+    [ПредставлениеАкты].[Предыдущие_показания] AS [Предыдущие_показания], 
+    [ПредставлениеАкты].[Текущие_показания] AS [Текущие_показания], 
+    [ПредставлениеАкты].[Дата_снятия_показаний] AS [Дата_снятия_показаний], 
+    [ПредставлениеАкты].[Расход] AS [Расход], 
+    [ПредставлениеАкты].[Дата_сдачи_акта] AS [Дата_сдачи_акта]
+    FROM [dbo].[ПредставлениеАкты] AS [ПредставлениеАкты]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ПредставлениеДоговоры" EntityType="Self.ПредставлениеДоговоры" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ПредставлениеДоговоры].[Номер_договора] AS [Номер_договора], 
+    [ПредставлениеДоговоры].[Дата_заключения_договора] AS [Дата_заключения_договора], 
+    [ПредставлениеДоговоры].[Особые_условия] AS [Особые_условия], 
+    [ПредставлениеДоговоры].[Код_тарифа] AS [Код_тарифа], 
+    [ПредставлениеДоговоры].[Номер_прибора_учета] AS [Номер_прибора_учета], 
+    [ПредставлениеДоговоры].[Марка] AS [Марка], 
+    [ПредставлениеДоговоры].[Тип] AS [Тип], 
+    [ПредставлениеДоговоры].[Расчетный_коэффициент] AS [Расчетный_коэффициент], 
+    [ПредставлениеДоговоры].[Дата_установки_введения_в_эксплуатацию__] AS [Дата_установки_введения_в_эксплуатацию__], 
+    [ПредставлениеДоговоры].[Место_установки] AS [Место_установки], 
+    [ПредставлениеДоговоры].[Код_абонета] AS [Код_абонета], 
+    [ПредставлениеДоговоры].[Серия_паспорта] AS [Серия_паспорта], 
+    [ПредставлениеДоговоры].[Номер_паспорта] AS [Номер_паспорта], 
+    [ПредставлениеДоговоры].[Фамилия] AS [Фамилия], 
+    [ПредставлениеДоговоры].[Имя] AS [Имя], 
+    [ПредставлениеДоговоры].[Отчество] AS [Отчество], 
+    [ПредставлениеДоговоры].[Дата_рождения] AS [Дата_рождения], 
+    [ПредставлениеДоговоры].[Пол] AS [Пол], 
+    [ПредставлениеДоговоры].[Кем_выдан] AS [Кем_выдан], 
+    [ПредставлениеДоговоры].[Телефон] AS [Телефон], 
+    [ПредставлениеДоговоры].[Мобильный_Телефон] AS [Мобильный_Телефон], 
+    [ПредставлениеДоговоры].[Электронная_почта] AS [Электронная_почта], 
+    [ПредставлениеДоговоры].[Улица] AS [Улица], 
+    [ПредставлениеДоговоры].[Дом_влад.] AS [Дом_влад.], 
+    [ПредставлениеДоговоры].[Квартира] AS [Квартира], 
+    [ПредставлениеДоговоры].[Площадь_жилового_дома_кв.м.] AS [Площадь_жилового_дома_кв.м.], 
+    [ПредставлениеДоговоры].[Кол-во_комнат] AS [Кол-во_комнат], 
+    [ПредставлениеДоговоры].[Кол-во_проживающих_граждан] AS [Кол-во_проживающих_граждан], 
+    [ПредставлениеДоговоры].[Код_представителя_компании] AS [Код_представителя_компании], 
+    [ПредставлениеДоговоры].[Фамилия представителя] AS [Фамилия представителя], 
+    [ПредставлениеДоговоры].[Имя представителя] AS [Имя представителя], 
+    [ПредставлениеДоговоры].[Отчество представителя] AS [Отчество представителя]
+    FROM [dbo].[ПредставлениеДоговоры] AS [ПредставлениеДоговоры]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ПредставлениеЗоны_суток" EntityType="Self.ПредставлениеЗоны_суток" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ПредставлениеЗоны_суток].[Код_зоны_суток] AS [Код_зоны_суток], 
+    [ПредставлениеЗоны_суток].[Название_зоны_суток] AS [Название_зоны_суток], 
+    [ПредставлениеЗоны_суток].[Начало_временного_периода] AS [Начало_временного_периода], 
+    [ПредставлениеЗоны_суток].[Конец_временного_периода] AS [Конец_временного_периода]
+    FROM [dbo].[ПредставлениеЗоны_суток] AS [ПредставлениеЗоны_суток]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ПредставлениеКонт_д" EntityType="Self.ПредставлениеКонт_д" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ПредставлениеКонт_д].[Код_контактных_данных] AS [Код_контактных_данных], 
+    [ПредставлениеКонт_д].[Телефон] AS [Телефон], 
+    [ПредставлениеКонт_д].[Мобильный_Телефон] AS [Мобильный_Телефон], 
+    [ПредставлениеКонт_д].[Электронная_почта] AS [Электронная_почта], 
+    [ПредставлениеКонт_д].[Улица] AS [Улица], 
+    [ПредставлениеКонт_д].[Дом_влад.] AS [Дом_влад.], 
+    [ПредставлениеКонт_д].[Квартира] AS [Квартира]
+    FROM [dbo].[ПредставлениеКонт_д] AS [ПредставлениеКонт_д]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ПредставлениеЛичн_д" EntityType="Self.ПредставлениеЛичн_д" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ПредставлениеЛичн_д].[Код_личных_данных] AS [Код_личных_данных], 
+    [ПредставлениеЛичн_д].[Серия_паспорта] AS [Серия_паспорта], 
+    [ПредставлениеЛичн_д].[Номер_паспорта] AS [Номер_паспорта], 
+    [ПредставлениеЛичн_д].[Фамилия] AS [Фамилия], 
+    [ПредставлениеЛичн_д].[Имя] AS [Имя], 
+    [ПредставлениеЛичн_д].[Отчество] AS [Отчество], 
+    [ПредставлениеЛичн_д].[Дата_рождения] AS [Дата_рождения], 
+    [ПредставлениеЛичн_д].[Пол] AS [Пол], 
+    [ПредставлениеЛичн_д].[Кем_выдан] AS [Кем_выдан], 
+    [ПредставлениеЛичн_д].[Улица] AS [Улица], 
+    [ПредставлениеЛичн_д].[Дом_влад.] AS [Дом_влад.], 
+    [ПредставлениеЛичн_д].[Квартира] AS [Квартира]
+    FROM [dbo].[ПредставлениеЛичн_д] AS [ПредставлениеЛичн_д]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ПредставлениеПаспорт" EntityType="Self.ПредставлениеПаспорт" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ПредставлениеПаспорт].[Серия_паспорта] AS [Серия_паспорта], 
+    [ПредставлениеПаспорт].[Номер_паспорта] AS [Номер_паспорта], 
+    [ПредставлениеПаспорт].[Кем_выдан] AS [Кем_выдан], 
+    [ПредставлениеПаспорт].[Улица] AS [Улица], 
+    [ПредставлениеПаспорт].[Дом_влад.] AS [Дом_влад.], 
+    [ПредставлениеПаспорт].[Квартира] AS [Квартира]
+    FROM [dbo].[ПредставлениеПаспорт] AS [ПредставлениеПаспорт]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ПредставлениеПредставитель_компании" EntityType="Self.ПредставлениеПредставитель_компании" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ПредставлениеПредставитель_компании].[Код_представителя_компании] AS [Код_представителя_компании], 
+    [ПредставлениеПредставитель_компании].[Серия_паспорта] AS [Серия_паспорта], 
+    [ПредставлениеПредставитель_компании].[Номер_паспорта] AS [Номер_паспорта], 
+    [ПредставлениеПредставитель_компании].[Номер_доверенности] AS [Номер_доверенности], 
+    [ПредставлениеПредставитель_компании].[Дата_выдачи_доверенности] AS [Дата_выдачи_доверенности], 
+    [ПредставлениеПредставитель_компании].[Фамилия] AS [Фамилия], 
+    [ПредставлениеПредставитель_компании].[Имя] AS [Имя], 
+    [ПредставлениеПредставитель_компании].[Отчество] AS [Отчество], 
+    [ПредставлениеПредставитель_компании].[Дата_рождения] AS [Дата_рождения], 
+    [ПредставлениеПредставитель_компании].[Пол] AS [Пол], 
+    [ПредставлениеПредставитель_компании].[Кем_выдан] AS [Кем_выдан], 
+    [ПредставлениеПредставитель_компании].[Улица] AS [Улица], 
+    [ПредставлениеПредставитель_компании].[Дом_влад.] AS [Дом_влад.], 
+    [ПредставлениеПредставитель_компании].[Квартира] AS [Квартира]
+    FROM [dbo].[ПредставлениеПредставитель_компании] AS [ПредставлениеПредставитель_компании]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ПредставлениеСтавки" EntityType="Self.ПредставлениеСтавки" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ПредставлениеСтавки].[Код_тарифа] AS [Код_тарифа], 
+    [ПредставлениеСтавки].[Название_зоны_суток] AS [Название_зоны_суток], 
+    [ПредставлениеСтавки].[Начало_временного_периода] AS [Начало_временного_периода], 
+    [ПредставлениеСтавки].[Конец_временного_периода] AS [Конец_временного_периода], 
+    [ПредставлениеСтавки].[Цена_за_кВт_час] AS [Цена_за_кВт_час]
+    FROM [dbo].[ПредставлениеСтавки] AS [ПредставлениеСтавки]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ПредставлениеТарифы" EntityType="Self.ПредставлениеТарифы" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ПредставлениеТарифы].[Код_тарифа] AS [Код_тарифа], 
+    [ПредставлениеТарифы].[Тип_учёта] AS [Тип_учёта], 
+    [ПредставлениеТарифы].[Группа_населения] AS [Группа_населения], 
+    [ПредставлениеТарифы].[Название_зоны_суток] AS [Название_зоны_суток], 
+    [ПредставлениеТарифы].[Начало_временного_периода] AS [Начало_временного_периода], 
+    [ПредставлениеТарифы].[Конец_временного_периода] AS [Конец_временного_периода], 
+    [ПредставлениеТарифы].[Цена_за_кВт_час] AS [Цена_за_кВт_час]
+    FROM [dbo].[ПредставлениеТарифы] AS [ПредставлениеТарифы]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Абонент__Код_дан__5535A963" Association="Self.FK__Абонент__Код_дан__5535A963">
+            <End Role="Данные_о_жилой_площади" EntitySet="Данные_о_жилой_площади" />
+            <End Role="Абонент" EntitySet="Абонент" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Абонент__Код_кон__4D94879B" Association="Self.FK__Абонент__Код_кон__4D94879B">
+            <End Role="Контактные_данные" EntitySet="Контактные_данные" />
+            <End Role="Абонент" EntitySet="Абонент" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Абонент__Код_лич__4BAC3F29" Association="Self.FK__Абонент__Код_лич__4BAC3F29">
+            <End Role="Личные_данные" EntitySet="Личные_данные" />
+            <End Role="Абонент" EntitySet="Абонент" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Акт_сняти__Код_п__5070F446" Association="Self.FK__Акт_сняти__Код_п__5070F446">
+            <End Role="Показания_прибора_учета" EntitySet="Показания_прибора_учета" />
+            <End Role="Акт_снятия_показаний_приборов_учета" EntitySet="Акт_снятия_показаний_приборов_учета" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Временной__Код_з__571DF1D5" Association="Self.FK__Временной__Код_з__571DF1D5">
+            <End Role="Зона_суток" EntitySet="Зона_суток" />
+            <End Role="Временной_период" EntitySet="Временной_период" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Договор_э__Код_а__48CFD27E" Association="Self.FK__Договор_э__Код_а__48CFD27E">
+            <End Role="Абонент" EntitySet="Абонент" />
+            <End Role="Договор_энергоснабжения" EntitySet="Договор_энергоснабжения" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Договор_э__Код_п__5441852A" Association="Self.FK__Договор_э__Код_п__5441852A">
+            <End Role="Представитель_компании" EntitySet="Представитель_компании" />
+            <End Role="Договор_энергоснабжения" EntitySet="Договор_энергоснабжения" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Договор_э__Код_т__4AB81AF0" Association="Self.FK__Договор_э__Код_т__4AB81AF0">
+            <End Role="Тариф" EntitySet="Тариф" />
+            <End Role="Договор_энергоснабжения" EntitySet="Договор_энергоснабжения" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Договор_э__Номер__5165187F" Association="Self.FK__Договор_э__Номер__5165187F">
+            <End Role="Прибор_учёта" EntitySet="Прибор_учёта" />
+            <End Role="Договор_энергоснабжения" EntitySet="Договор_энергоснабжения" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Контактны__Код_а__4E88ABD4" Association="Self.FK__Контактны__Код_а__4E88ABD4">
+            <End Role="Адрес" EntitySet="Адрес" />
+            <End Role="Контактные_данные" EntitySet="Контактные_данные" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Личные_данные__534D60F1" Association="Self.FK__Личные_данные__534D60F1">
+            <End Role="Паспорт" EntitySet="Паспорт" />
+            <End Role="Личные_данные" EntitySet="Личные_данные" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Паспорт__Код_адр__4F7CD00D" Association="Self.FK__Паспорт__Код_адр__4F7CD00D">
+            <End Role="Адрес" EntitySet="Адрес" />
+            <End Role="Паспорт" EntitySet="Паспорт" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Показания__Номер__52593CB8" Association="Self.FK__Показания__Номер__52593CB8">
+            <End Role="Договор_энергоснабжения" EntitySet="Договор_энергоснабжения" />
+            <End Role="Показания_прибора_учета" EntitySet="Показания_прибора_учета" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Представи__Код_л__4CA06362" Association="Self.FK__Представи__Код_л__4CA06362">
+            <End Role="Личные_данные" EntitySet="Личные_данные" />
+            <End Role="Представитель_компании" EntitySet="Представитель_компании" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Представи__Номер__5629CD9C" Association="Self.FK__Представи__Номер__5629CD9C">
+            <End Role="Доверенность" EntitySet="Доверенность" />
+            <End Role="Представитель_компании" EntitySet="Представитель_компании" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ставка__Код_зоны__5812160E" Association="Self.FK__Ставка__Код_зоны__5812160E">
+            <End Role="Зона_суток" EntitySet="Зона_суток" />
+            <End Role="Ставка" EntitySet="Ставка" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ставка__Код_тари__49C3F6B7" Association="Self.FK__Ставка__Код_тари__49C3F6B7">
+            <End Role="Тариф" EntitySet="Тариф" />
+            <End Role="Ставка" EntitySet="Ставка" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="АСКУЭModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="ПоискПоказанийАбонента_Result">
+          <Property Name="Код_показаний_прибора_учета" Type="Int32" Nullable="false" />
+          <Property Name="Номер_договора" Type="Int32" Nullable="false" />
+          <Property Name="Предыдущие_показания" Type="Int32" Nullable="false" />
+          <Property Name="Текущие_показания" Type="Int32" Nullable="false" />
+          <Property Name="Дата_снятия_показаний" Type="DateTime" Nullable="false" />
+          <Property Name="Конечные_показания" Type="Boolean" Nullable="false" />
+          <Property Name="Расход" Type="Int32" />
+        </ComplexType>
+        <ComplexType Name="ПоискПоследнегоСнятияПоказаний_Result">
+          <Property Name="Код_показаний_прибора_учета" Type="Int32" Nullable="false" />
+          <Property Name="Номер_договора" Type="Int32" Nullable="false" />
+          <Property Name="Предыдущие_показания" Type="Int32" Nullable="false" />
+          <Property Name="Текущие_показания" Type="Int32" Nullable="false" />
+          <Property Name="Дата_снятия_показаний" Type="DateTime" Nullable="false" />
+          <Property Name="Конечные_показания" Type="Boolean" Nullable="false" />
+          <Property Name="Расход" Type="Int32" />
+        </ComplexType>
+        <ComplexType Name="ПоискСтавокАбонента_Result">
+          <Property Name="Код_ставки" Type="Int32" Nullable="false" />
+          <Property Name="Код_тарифа" Type="Int32" Nullable="false" />
+          <Property Name="Код_зоны_суток" Type="Int32" />
+          <Property Name="Цена_за_кВт_час" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ФильтрацияАбонентовПоУлице_Result">
+          <Property Name="Код_абонета" Type="Int32" Nullable="false" />
+          <Property Name="Серия_паспорта" Type="Int32" />
+          <Property Name="Номер_паспорта" Type="Int32" />
+          <Property Name="Фамилия" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Имя" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Отчество" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Дата_рождения" Type="DateTime" />
+          <Property Name="Пол" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Кем_выдан" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Телефон" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Name="Мобильный_Телефон" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Электронная_почта" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Улица" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Дом_влад_" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Квартира" Type="Int32" />
+          <Property Name="Площадь_жилового_дома_кв_м_" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Кол_во_комнат" Type="Int32" />
+          <Property Name="Кол_во_проживающих_граждан" Type="Int32" />
+        </ComplexType>
+        <ComplexType Name="ФильтрацияПриборовУчёта_Result">
+          <Property Name="Номер_прибора_учета" Type="Int32" Nullable="false" />
+          <Property Name="Марка" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Тип" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Расчетный_коэффициент" Type="Int32" Nullable="false" />
+          <Property Name="Дата_установки_введения_в_эксплуатацию__" Type="DateTime" Nullable="false" />
+          <Property Name="Место_установки" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ФильтрацияТарифов_Result">
+          <Property Name="Код_тарифа" Type="Int32" Nullable="false" />
+          <Property Name="Тип_учёта" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Группа_населения" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Абонент">
+          <Key>
+            <PropertyRef Name="Код_абонета" />
+          </Key>
+          <Property Name="Код_абонета" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Код_контактных_данных" Type="Int32" Nullable="false" />
+          <Property Name="Код_личных_данных" Type="Int32" Nullable="false" />
+          <Property Name="Код_данных_о_жилой_площади" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Данные_о_жилой_площади" Relationship="Self.FK__Абонент__Код_дан__5535A963" FromRole="Абонент" ToRole="Данные_о_жилой_площади" />
+          <NavigationProperty Name="Данные_о_жилой_площади1" Relationship="Self.FK__Абонент__Код_дан__5D95E53A" FromRole="Абонент" ToRole="Данные_о_жилой_площади" />
+          <NavigationProperty Name="Контактные_данные" Relationship="Self.FK__Абонент__Код_кон__4D94879B" FromRole="Абонент" ToRole="Контактные_данные" />
+          <NavigationProperty Name="Контактные_данные1" Relationship="Self.FK__Абонент__Код_кон__55F4C372" FromRole="Абонент" ToRole="Контактные_данные" />
+          <NavigationProperty Name="Личные_данные" Relationship="Self.FK__Абонент__Код_лич__4BAC3F29" FromRole="Абонент" ToRole="Личные_данные" />
+          <NavigationProperty Name="Личные_данные1" Relationship="Self.FK__Абонент__Код_лич__540C7B00" FromRole="Абонент" ToRole="Личные_данные" />
+          <NavigationProperty Name="Договор_энергоснабжения" Relationship="Self.FK__Договор_э__Код_а__48CFD27E" FromRole="Абонент" ToRole="Договор_энергоснабжения" />
+          <NavigationProperty Name="Договор_энергоснабжения1" Relationship="Self.FK__Договор_э__Код_а__51300E55" FromRole="Абонент" ToRole="Договор_энергоснабжения" />
+        </EntityType>
+        <EntityType Name="Адрес">
+          <Key>
+            <PropertyRef Name="Код_адреса" />
+          </Key>
+          <Property Name="Код_адреса" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Улица" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Дом_влад_" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Квартира" Type="Int32" />
+          <NavigationProperty Name="Контактные_данные" Relationship="Self.FK__Контактны__Код_а__4E88ABD4" FromRole="Адрес" ToRole="Контактные_данные" />
+          <NavigationProperty Name="Контактные_данные1" Relationship="Self.FK__Контактны__Код_а__56E8E7AB" FromRole="Адрес" ToRole="Контактные_данные" />
+          <NavigationProperty Name="Паспорт" Relationship="Self.FK__Паспорт__Код_адр__4F7CD00D" FromRole="Адрес" ToRole="Паспорт" />
+          <NavigationProperty Name="Паспорт1" Relationship="Self.FK__Паспорт__Код_адр__57DD0BE4" FromRole="Адрес" ToRole="Паспорт" />
+        </EntityType>
+        <EntityType Name="Акт_снятия_показаний_приборов_учета">
+          <Key>
+            <PropertyRef Name="Код_акта_снятия_показаний_приборов_учета" />
+          </Key>
+          <Property Name="Код_акта_снятия_показаний_приборов_учета" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Код_показаний_прибора_учета" Type="Int32" Nullable="false" />
+          <Property Name="Дата_сдачи_акта" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Показания_прибора_учета" Relationship="Self.FK__Акт_сняти__Код_п__5070F446" FromRole="Акт_снятия_показаний_приборов_учета" ToRole="Показания_прибора_учета" />
+          <NavigationProperty Name="Показания_прибора_учета1" Relationship="Self.FK__Акт_сняти__Код_п__58D1301D" FromRole="Акт_снятия_показаний_приборов_учета" ToRole="Показания_прибора_учета" />
+        </EntityType>
+        <EntityType Name="Временной_период">
+          <Key>
+            <PropertyRef Name="Код_временного_периода" />
+          </Key>
+          <Property Name="Код_временного_периода" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Код_зоны_суток" Type="Int32" Nullable="false" />
+          <Property Name="Начало_временного_периода" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Конец_временного_периода" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Зона_суток" Relationship="Self.FK__Временной__Код_з__571DF1D5" FromRole="Временной_период" ToRole="Зона_суток" />
+          <NavigationProperty Name="Зона_суток1" Relationship="Self.FK__Временной__Код_з__5F7E2DAC" FromRole="Временной_период" ToRole="Зона_суток" />
+        </EntityType>
+        <EntityType Name="Данные_о_жилой_площади">
+          <Key>
+            <PropertyRef Name="Код_данных_о_жилой_площади" />
+          </Key>
+          <Property Name="Код_данных_о_жилой_площади" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Площадь_жилового_дома_кв_м_" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Кол_во_комнат" Type="Int32" Nullable="false" />
+          <Property Name="Кол_во_проживающих_граждан" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Абонент" Relationship="Self.FK__Абонент__Код_дан__5535A963" FromRole="Данные_о_жилой_площади" ToRole="Абонент" />
+          <NavigationProperty Name="Абонент1" Relationship="Self.FK__Абонент__Код_дан__5D95E53A" FromRole="Данные_о_жилой_площади" ToRole="Абонент" />
+        </EntityType>
+        <EntityType Name="Доверенность">
+          <Key>
+            <PropertyRef Name="Номер_доверенности" />
+          </Key>
+          <Property Name="Номер_доверенности" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Дата_выдачи_доверенности" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Представитель_компании" Relationship="Self.FK__Представи__Номер__5629CD9C" FromRole="Доверенность" ToRole="Представитель_компании" />
+          <NavigationProperty Name="Представитель_компании1" Relationship="Self.FK__Представи__Номер__5E8A0973" FromRole="Доверенность" ToRole="Представитель_компании" />
+        </EntityType>
+        <EntityType Name="Договор_энергоснабжения">
+          <Key>
+            <PropertyRef Name="Номер_договора" />
+          </Key>
+          <Property Name="Номер_договора" Type="Int32" Nullable="false" />
+          <Property Name="Номер_прибора_учета" Type="Int32" Nullable="false" />
+          <Property Name="Код_абонета" Type="Int32" Nullable="false" />
+          <Property Name="Код_представителя_компании" Type="Int32" Nullable="false" />
+          <Property Name="Код_тарифа" Type="Int32" Nullable="false" />
+          <Property Name="Дата_заключения_договора" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Особые_условия" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Абонент" Relationship="Self.FK__Договор_э__Код_а__48CFD27E" FromRole="Договор_энергоснабжения" ToRole="Абонент" />
+          <NavigationProperty Name="Абонент1" Relationship="Self.FK__Договор_э__Код_а__51300E55" FromRole="Договор_энергоснабжения" ToRole="Абонент" />
+          <NavigationProperty Name="Представитель_компании" Relationship="Self.FK__Договор_э__Код_п__5441852A" FromRole="Договор_энергоснабжения" ToRole="Представитель_компании" />
+          <NavigationProperty Name="Представитель_компании1" Relationship="Self.FK__Договор_э__Код_п__5CA1C101" FromRole="Договор_энергоснабжения" ToRole="Представитель_компании" />
+          <NavigationProperty Name="Тариф" Relationship="Self.FK__Договор_э__Код_т__4AB81AF0" FromRole="Договор_энергоснабжения" ToRole="Тариф" />
+          <NavigationProperty Name="Тариф1" Relationship="Self.FK__Договор_э__Код_т__531856C7" FromRole="Договор_энергоснабжения" ToRole="Тариф" />
+          <NavigationProperty Name="Прибор_учёта" Relationship="Self.FK__Договор_э__Номер__5165187F" FromRole="Договор_энергоснабжения" ToRole="Прибор_учёта" />
+          <NavigationProperty Name="Прибор_учёта1" Relationship="Self.FK__Договор_э__Номер__59C55456" FromRole="Договор_энергоснабжения" ToRole="Прибор_учёта" />
+          <NavigationProperty Name="Показания_прибора_учета" Relationship="Self.FK__Показания__Номер__52593CB8" FromRole="Договор_энергоснабжения" ToRole="Показания_прибора_учета" />
+          <NavigationProperty Name="Показания_прибора_учета1" Relationship="Self.FK__Показания__Номер__5AB9788F" FromRole="Договор_энергоснабжения" ToRole="Показания_прибора_учета" />
+        </EntityType>
+        <EntityType Name="Зона_суток">
+          <Key>
+            <PropertyRef Name="Код_зоны_суток" />
+          </Key>
+          <Property Name="Код_зоны_суток" Type="Int32" Nullable="false" />
+          <Property Name="Название_зоны_суток" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Временной_период" Relationship="Self.FK__Временной__Код_з__571DF1D5" FromRole="Зона_суток" ToRole="Временной_период" />
+          <NavigationProperty Name="Временной_период1" Relationship="Self.FK__Временной__Код_з__5F7E2DAC" FromRole="Зона_суток" ToRole="Временной_период" />
+          <NavigationProperty Name="Ставка" Relationship="Self.FK__Ставка__Код_зоны__5812160E" FromRole="Зона_суток" ToRole="Ставка" />
+          <NavigationProperty Name="Ставка1" Relationship="Self.FK__Ставка__Код_зоны__607251E5" FromRole="Зона_суток" ToRole="Ставка" />
+        </EntityType>
+        <EntityType Name="Контактные_данные">
+          <Key>
+            <PropertyRef Name="Код_контактных_данных" />
+          </Key>
+          <Property Name="Код_контактных_данных" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Код_адреса" Type="Int32" Nullable="false" />
+          <Property Name="Телефон" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Name="Мобильный_Телефон" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Электронная_почта" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Абонент" Relationship="Self.FK__Абонент__Код_кон__4D94879B" FromRole="Контактные_данные" ToRole="Абонент" />
+          <NavigationProperty Name="Абонент1" Relationship="Self.FK__Абонент__Код_кон__55F4C372" FromRole="Контактные_данные" ToRole="Абонент" />
+          <NavigationProperty Name="Адрес" Relationship="Self.FK__Контактны__Код_а__4E88ABD4" FromRole="Контактные_данные" ToRole="Адрес" />
+          <NavigationProperty Name="Адрес1" Relationship="Self.FK__Контактны__Код_а__56E8E7AB" FromRole="Контактные_данные" ToRole="Адрес" />
+        </EntityType>
+        <EntityType Name="Личные_данные">
+          <Key>
+            <PropertyRef Name="Код_личных_данных" />
+          </Key>
+          <Property Name="Код_личных_данных" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Серия_паспорта" Type="Int32" Nullable="false" />
+          <Property Name="Номер_паспорта" Type="Int32" Nullable="false" />
+          <Property Name="Фамилия" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Имя" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Отчество" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Дата_рождения" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Пол" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Абонент" Relationship="Self.FK__Абонент__Код_лич__4BAC3F29" FromRole="Личные_данные" ToRole="Абонент" />
+          <NavigationProperty Name="Абонент1" Relationship="Self.FK__Абонент__Код_лич__540C7B00" FromRole="Личные_данные" ToRole="Абонент" />
+          <NavigationProperty Name="Паспорт" Relationship="Self.FK__Личные_данные__534D60F1" FromRole="Личные_данные" ToRole="Паспорт" />
+          <NavigationProperty Name="Паспорт1" Relationship="Self.FK__Личные_данные__5BAD9CC8" FromRole="Личные_данные" ToRole="Паспорт" />
+          <NavigationProperty Name="Представитель_компании" Relationship="Self.FK__Представи__Код_л__4CA06362" FromRole="Личные_данные" ToRole="Представитель_компании" />
+          <NavigationProperty Name="Представитель_компании1" Relationship="Self.FK__Представи__Код_л__55009F39" FromRole="Личные_данные" ToRole="Представитель_компании" />
+        </EntityType>
+        <EntityType Name="Паспорт">
+          <Key>
+            <PropertyRef Name="Серия_паспорта" />
+            <PropertyRef Name="Номер_паспорта" />
+          </Key>
+          <Property Name="Серия_паспорта" Type="Int32" Nullable="false" />
+          <Property Name="Номер_паспорта" Type="Int32" Nullable="false" />
+          <Property Name="Код_адреса" Type="Int32" Nullable="false" />
+          <Property Name="Кем_выдан" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Адрес" Relationship="Self.FK__Паспорт__Код_адр__4F7CD00D" FromRole="Паспорт" ToRole="Адрес" />
+          <NavigationProperty Name="Адрес1" Relationship="Self.FK__Паспорт__Код_адр__57DD0BE4" FromRole="Паспорт" ToRole="Адрес" />
+          <NavigationProperty Name="Личные_данные" Relationship="Self.FK__Личные_данные__534D60F1" FromRole="Паспорт" ToRole="Личные_данные" />
+          <NavigationProperty Name="Личные_данные1" Relationship="Self.FK__Личные_данные__5BAD9CC8" FromRole="Паспорт" ToRole="Личные_данные" />
+        </EntityType>
+        <EntityType Name="Показания_прибора_учета">
+          <Key>
+            <PropertyRef Name="Код_показаний_прибора_учета" />
+          </Key>
+          <Property Name="Код_показаний_прибора_учета" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Номер_договора" Type="Int32" Nullable="false" />
+          <Property Name="Предыдущие_показания" Type="Int32" Nullable="false" />
+          <Property Name="Текущие_показания" Type="Int32" Nullable="false" />
+          <Property Name="Дата_снятия_показаний" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Конечные_показания" Type="Boolean" Nullable="false" />
+          <Property Name="Расход" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Акт_снятия_показаний_приборов_учета" Relationship="Self.FK__Акт_сняти__Код_п__5070F446" FromRole="Показания_прибора_учета" ToRole="Акт_снятия_показаний_приборов_учета" />
+          <NavigationProperty Name="Акт_снятия_показаний_приборов_учета1" Relationship="Self.FK__Акт_сняти__Код_п__58D1301D" FromRole="Показания_прибора_учета" ToRole="Акт_снятия_показаний_приборов_учета" />
+          <NavigationProperty Name="Договор_энергоснабжения" Relationship="Self.FK__Показания__Номер__52593CB8" FromRole="Показания_прибора_учета" ToRole="Договор_энергоснабжения" />
+          <NavigationProperty Name="Договор_энергоснабжения1" Relationship="Self.FK__Показания__Номер__5AB9788F" FromRole="Показания_прибора_учета" ToRole="Договор_энергоснабжения" />
+        </EntityType>
+        <EntityType Name="Пользователь">
+          <Key>
+            <PropertyRef Name="Код_пользователя" />
+          </Key>
+          <Property Name="Код_пользователя" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Логин" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Пароль" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Роль" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Представитель_компании">
+          <Key>
+            <PropertyRef Name="Код_представителя_компании" />
+          </Key>
+          <Property Name="Код_представителя_компании" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Код_личных_данных" Type="Int32" Nullable="false" />
+          <Property Name="Номер_доверенности" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Доверенность" Relationship="Self.FK__Представи__Номер__5629CD9C" FromRole="Представитель_компании" ToRole="Доверенность" />
+          <NavigationProperty Name="Доверенность1" Relationship="Self.FK__Представи__Номер__5E8A0973" FromRole="Представитель_компании" ToRole="Доверенность" />
+          <NavigationProperty Name="Договор_энергоснабжения" Relationship="Self.FK__Договор_э__Код_п__5441852A" FromRole="Представитель_компании" ToRole="Договор_энергоснабжения" />
+          <NavigationProperty Name="Договор_энергоснабжения1" Relationship="Self.FK__Договор_э__Код_п__5CA1C101" FromRole="Представитель_компании" ToRole="Договор_энергоснабжения" />
+          <NavigationProperty Name="Личные_данные" Relationship="Self.FK__Представи__Код_л__4CA06362" FromRole="Представитель_компании" ToRole="Личные_данные" />
+          <NavigationProperty Name="Личные_данные1" Relationship="Self.FK__Представи__Код_л__55009F39" FromRole="Представитель_компании" ToRole="Личные_данные" />
+        </EntityType>
+        <EntityType Name="Прибор_учёта">
+          <Key>
+            <PropertyRef Name="Номер_прибора_учета" />
+          </Key>
+          <Property Name="Номер_прибора_учета" Type="Int32" Nullable="false" />
+          <Property Name="Марка" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Тип" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Расчетный_коэффициент" Type="Int32" Nullable="false" />
+          <Property Name="Дата_установки_введения_в_эксплуатацию__" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Место_установки" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Договор_энергоснабжения" Relationship="Self.FK__Договор_э__Номер__5165187F" FromRole="Прибор_учёта" ToRole="Договор_энергоснабжения" />
+          <NavigationProperty Name="Договор_энергоснабжения1" Relationship="Self.FK__Договор_э__Номер__59C55456" FromRole="Прибор_учёта" ToRole="Договор_энергоснабжения" />
+        </EntityType>
+        <EntityType Name="Ставка">
+          <Key>
+            <PropertyRef Name="Код_ставки" />
+          </Key>
+          <Property Name="Код_ставки" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Код_тарифа" Type="Int32" Nullable="false" />
+          <Property Name="Код_зоны_суток" Type="Int32" />
+          <Property Name="Цена_за_кВт_час" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Зона_суток" Relationship="Self.FK__Ставка__Код_зоны__5812160E" FromRole="Ставка" ToRole="Зона_суток" />
+          <NavigationProperty Name="Зона_суток1" Relationship="Self.FK__Ставка__Код_зоны__607251E5" FromRole="Ставка" ToRole="Зона_суток" />
+          <NavigationProperty Name="Тариф" Relationship="Self.FK__Ставка__Код_тари__49C3F6B7" FromRole="Ставка" ToRole="Тариф" />
+          <NavigationProperty Name="Тариф1" Relationship="Self.FK__Ставка__Код_тари__5224328E" FromRole="Ставка" ToRole="Тариф" />
+        </EntityType>
+        <EntityType Name="Тариф">
+          <Key>
+            <PropertyRef Name="Код_тарифа" />
+          </Key>
+          <Property Name="Код_тарифа" Type="Int32" Nullable="false" />
+          <Property Name="Тип_учёта" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Группа_населения" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Договор_энергоснабжения" Relationship="Self.FK__Договор_э__Код_т__4AB81AF0" FromRole="Тариф" ToRole="Договор_энергоснабжения" />
+          <NavigationProperty Name="Договор_энергоснабжения1" Relationship="Self.FK__Договор_э__Код_т__531856C7" FromRole="Тариф" ToRole="Договор_энергоснабжения" />
+          <NavigationProperty Name="Ставка" Relationship="Self.FK__Ставка__Код_тари__49C3F6B7" FromRole="Тариф" ToRole="Ставка" />
+          <NavigationProperty Name="Ставка1" Relationship="Self.FK__Ставка__Код_тари__5224328E" FromRole="Тариф" ToRole="Ставка" />
+        </EntityType>
+        <EntityType Name="ПредставлениеАбонент">
+          <Key>
+            <PropertyRef Name="Код_абонета" />
+          </Key>
+          <Property Name="Код_абонета" Type="Int32" Nullable="false" />
+          <Property Name="Серия_паспорта" Type="Int32" />
+          <Property Name="Номер_паспорта" Type="Int32" />
+          <Property Name="Фамилия" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Имя" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Отчество" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Дата_рождения" Type="DateTime" Precision="3" />
+          <Property Name="Пол" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Кем_выдан" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Телефон" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Name="Мобильный_Телефон" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Электронная_почта" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Улица" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Дом_влад_" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Квартира" Type="Int32" />
+          <Property Name="Площадь_жилового_дома_кв_м_" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Кол_во_комнат" Type="Int32" />
+          <Property Name="Кол_во_проживающих_граждан" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ПредставлениеАкты">
+          <Key>
+            <PropertyRef Name="Код_акта_снятия_показаний_приборов_учета" />
+            <PropertyRef Name="Дата_сдачи_акта" />
+          </Key>
+          <Property Name="Код_акта_снятия_показаний_приборов_учета" Type="Int32" Nullable="false" />
+          <Property Name="Номер_договора" Type="Int32" />
+          <Property Name="Предыдущие_показания" Type="Int32" />
+          <Property Name="Текущие_показания" Type="Int32" />
+          <Property Name="Дата_снятия_показаний" Type="DateTime" Precision="3" />
+          <Property Name="Расход" Type="Int32" />
+          <Property Name="Дата_сдачи_акта" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ПредставлениеДоговоры">
+          <Key>
+            <PropertyRef Name="Номер_договора" />
+            <PropertyRef Name="Дата_заключения_договора" />
+            <PropertyRef Name="Код_тарифа" />
+          </Key>
+          <Property Name="Номер_договора" Type="Int32" Nullable="false" />
+          <Property Name="Дата_заключения_договора" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Особые_условия" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Код_тарифа" Type="Int32" Nullable="false" />
+          <Property Name="Номер_прибора_учета" Type="Int32" />
+          <Property Name="Марка" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Тип" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Расчетный_коэффициент" Type="Int32" />
+          <Property Name="Дата_установки_введения_в_эксплуатацию__" Type="DateTime" Precision="3" />
+          <Property Name="Место_установки" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Код_абонета" Type="Int32" />
+          <Property Name="Серия_паспорта" Type="Int32" />
+          <Property Name="Номер_паспорта" Type="Int32" />
+          <Property Name="Фамилия" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Имя" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Отчество" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Дата_рождения" Type="DateTime" Precision="3" />
+          <Property Name="Пол" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Кем_выдан" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Телефон" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Name="Мобильный_Телефон" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Электронная_почта" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Улица" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Дом_влад_" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Квартира" Type="Int32" />
+          <Property Name="Площадь_жилового_дома_кв_м_" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Кол_во_комнат" Type="Int32" />
+          <Property Name="Кол_во_проживающих_граждан" Type="Int32" />
+          <Property Name="Код_представителя_компании" Type="Int32" />
+          <Property Name="Фамилия_представителя" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Имя_представителя" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Отчество_представителя" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ПредставлениеЗоны_суток">
+          <Key>
+            <PropertyRef Name="Код_зоны_суток" />
+            <PropertyRef Name="Название_зоны_суток" />
+            <PropertyRef Name="Начало_временного_периода" />
+            <PropertyRef Name="Конец_временного_периода" />
+          </Key>
+          <Property Name="Код_зоны_суток" Type="Int32" Nullable="false" />
+          <Property Name="Название_зоны_суток" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Начало_временного_периода" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Конец_временного_периода" Type="Time" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="ПредставлениеКонт_д">
+          <Key>
+            <PropertyRef Name="Код_контактных_данных" />
+          </Key>
+          <Property Name="Код_контактных_данных" Type="Int32" Nullable="false" />
+          <Property Name="Телефон" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Name="Мобильный_Телефон" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Электронная_почта" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Улица" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Дом_влад_" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Квартира" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ПредставлениеЛичн_д">
+          <Key>
+            <PropertyRef Name="Код_личных_данных" />
+            <PropertyRef Name="Фамилия" />
+            <PropertyRef Name="Имя" />
+            <PropertyRef Name="Отчество" />
+            <PropertyRef Name="Дата_рождения" />
+            <PropertyRef Name="Пол" />
+          </Key>
+          <Property Name="Код_личных_данных" Type="Int32" Nullable="false" />
+          <Property Name="Серия_паспорта" Type="Int32" />
+          <Property Name="Номер_паспорта" Type="Int32" />
+          <Property Name="Фамилия" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Имя" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Отчество" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Дата_рождения" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Пол" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Кем_выдан" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Улица" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Дом_влад_" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Квартира" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ПредставлениеПаспорт">
+          <Key>
+            <PropertyRef Name="Серия_паспорта" />
+            <PropertyRef Name="Номер_паспорта" />
+            <PropertyRef Name="Кем_выдан" />
+          </Key>
+          <Property Name="Серия_паспорта" Type="Int32" Nullable="false" />
+          <Property Name="Номер_паспорта" Type="Int32" Nullable="false" />
+          <Property Name="Кем_выдан" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Улица" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Дом_влад_" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Квартира" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ПредставлениеПредставитель_компании">
+          <Key>
+            <PropertyRef Name="Код_представителя_компании" />
+          </Key>
+          <Property Name="Код_представителя_компании" Type="Int32" Nullable="false" />
+          <Property Name="Серия_паспорта" Type="Int32" />
+          <Property Name="Номер_паспорта" Type="Int32" />
+          <Property Name="Номер_доверенности" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="Дата_выдачи_доверенности" Type="DateTime" Precision="3" />
+          <Property Name="Фамилия" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Имя" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Отчество" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Дата_рождения" Type="DateTime" Precision="3" />
+          <Property Name="Пол" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Кем_выдан" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Улица" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Дом_влад_" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Квартира" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ПредставлениеСтавки">
+          <Key>
+            <PropertyRef Name="Код_тарифа" />
+            <PropertyRef Name="Цена_за_кВт_час" />
+          </Key>
+          <Property Name="Код_тарифа" Type="Int32" Nullable="false" />
+          <Property Name="Название_зоны_суток" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Начало_временного_периода" Type="Time" Precision="7" />
+          <Property Name="Конец_временного_периода" Type="Time" Precision="7" />
+          <Property Name="Цена_за_кВт_час" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ПредставлениеТарифы">
+          <Key>
+            <PropertyRef Name="Код_тарифа" />
+            <PropertyRef Name="Тип_учёта" />
+            <PropertyRef Name="Группа_населения" />
+          </Key>
+          <Property Name="Код_тарифа" Type="Int32" Nullable="false" />
+          <Property Name="Тип_учёта" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Группа_населения" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Название_зоны_суток" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Начало_временного_периода" Type="Time" Precision="7" />
+          <Property Name="Конец_временного_периода" Type="Time" Precision="7" />
+          <Property Name="Цена_за_кВт_час" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <Association Name="FK__Абонент__Код_дан__5535A963">
+          <End Role="Данные_о_жилой_площади" Type="Self.Данные_о_жилой_площади" Multiplicity="1" />
+          <End Role="Абонент" Type="Self.Абонент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Данные_о_жилой_площади">
+              <PropertyRef Name="Код_данных_о_жилой_площади" />
+            </Principal>
+            <Dependent Role="Абонент">
+              <PropertyRef Name="Код_данных_о_жилой_площади" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Абонент__Код_дан__5D95E53A">
+          <End Role="Данные_о_жилой_площади" Type="Self.Данные_о_жилой_площади" Multiplicity="1" />
+          <End Role="Абонент" Type="Self.Абонент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Данные_о_жилой_площади">
+              <PropertyRef Name="Код_данных_о_жилой_площади" />
+            </Principal>
+            <Dependent Role="Абонент">
+              <PropertyRef Name="Код_данных_о_жилой_площади" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Абонент__Код_кон__4D94879B">
+          <End Role="Контактные_данные" Type="Self.Контактные_данные" Multiplicity="1" />
+          <End Role="Абонент" Type="Self.Абонент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Контактные_данные">
+              <PropertyRef Name="Код_контактных_данных" />
+            </Principal>
+            <Dependent Role="Абонент">
+              <PropertyRef Name="Код_контактных_данных" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Абонент__Код_кон__55F4C372">
+          <End Role="Контактные_данные" Type="Self.Контактные_данные" Multiplicity="1" />
+          <End Role="Абонент" Type="Self.Абонент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Контактные_данные">
+              <PropertyRef Name="Код_контактных_данных" />
+            </Principal>
+            <Dependent Role="Абонент">
+              <PropertyRef Name="Код_контактных_данных" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Абонент__Код_лич__4BAC3F29">
+          <End Role="Личные_данные" Type="Self.Личные_данные" Multiplicity="1" />
+          <End Role="Абонент" Type="Self.Абонент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Личные_данные">
+              <PropertyRef Name="Код_личных_данных" />
+            </Principal>
+            <Dependent Role="Абонент">
+              <PropertyRef Name="Код_личных_данных" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Абонент__Код_лич__540C7B00">
+          <End Role="Личные_данные" Type="Self.Личные_данные" Multiplicity="1" />
+          <End Role="Абонент" Type="Self.Абонент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Личные_данные">
+              <PropertyRef Name="Код_личных_данных" />
+            </Principal>
+            <Dependent Role="Абонент">
+              <PropertyRef Name="Код_личных_данных" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Договор_э__Код_а__48CFD27E">
+          <End Role="Абонент" Type="Self.Абонент" Multiplicity="1" />
+          <End Role="Договор_энергоснабжения" Type="Self.Договор_энергоснабжения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Абонент">
+              <PropertyRef Name="Код_абонета" />
+            </Principal>
+            <Dependent Role="Договор_энергоснабжения">
+              <PropertyRef Name="Код_абонета" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Договор_э__Код_а__51300E55">
+          <End Role="Абонент" Type="Self.Абонент" Multiplicity="1" />
+          <End Role="Договор_энергоснабжения" Type="Self.Договор_энергоснабжения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Абонент">
+              <PropertyRef Name="Код_абонета" />
+            </Principal>
+            <Dependent Role="Договор_энергоснабжения">
+              <PropertyRef Name="Код_абонета" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Контактны__Код_а__4E88ABD4">
+          <End Role="Адрес" Type="Self.Адрес" Multiplicity="1" />
+          <End Role="Контактные_данные" Type="Self.Контактные_данные" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Адрес">
+              <PropertyRef Name="Код_адреса" />
+            </Principal>
+            <Dependent Role="Контактные_данные">
+              <PropertyRef Name="Код_адреса" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Контактны__Код_а__56E8E7AB">
+          <End Role="Адрес" Type="Self.Адрес" Multiplicity="1" />
+          <End Role="Контактные_данные" Type="Self.Контактные_данные" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Адрес">
+              <PropertyRef Name="Код_адреса" />
+            </Principal>
+            <Dependent Role="Контактные_данные">
+              <PropertyRef Name="Код_адреса" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Паспорт__Код_адр__4F7CD00D">
+          <End Role="Адрес" Type="Self.Адрес" Multiplicity="1" />
+          <End Role="Паспорт" Type="Self.Паспорт" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Адрес">
+              <PropertyRef Name="Код_адреса" />
+            </Principal>
+            <Dependent Role="Паспорт">
+              <PropertyRef Name="Код_адреса" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Паспорт__Код_адр__57DD0BE4">
+          <End Role="Адрес" Type="Self.Адрес" Multiplicity="1" />
+          <End Role="Паспорт" Type="Self.Паспорт" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Адрес">
+              <PropertyRef Name="Код_адреса" />
+            </Principal>
+            <Dependent Role="Паспорт">
+              <PropertyRef Name="Код_адреса" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Акт_сняти__Код_п__5070F446">
+          <End Role="Показания_прибора_учета" Type="Self.Показания_прибора_учета" Multiplicity="1" />
+          <End Role="Акт_снятия_показаний_приборов_учета" Type="Self.Акт_снятия_показаний_приборов_учета" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Показания_прибора_учета">
+              <PropertyRef Name="Код_показаний_прибора_учета" />
+            </Principal>
+            <Dependent Role="Акт_снятия_показаний_приборов_учета">
+              <PropertyRef Name="Код_показаний_прибора_учета" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Акт_сняти__Код_п__58D1301D">
+          <End Role="Показания_прибора_учета" Type="Self.Показания_прибора_учета" Multiplicity="1" />
+          <End Role="Акт_снятия_показаний_приборов_учета" Type="Self.Акт_снятия_показаний_приборов_учета" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Показания_прибора_учета">
+              <PropertyRef Name="Код_показаний_прибора_учета" />
+            </Principal>
+            <Dependent Role="Акт_снятия_показаний_приборов_учета">
+              <PropertyRef Name="Код_показаний_прибора_учета" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Временной__Код_з__571DF1D5">
+          <End Role="Зона_суток" Type="Self.Зона_суток" Multiplicity="1" />
+          <End Role="Временной_период" Type="Self.Временной_период" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Зона_суток">
+              <PropertyRef Name="Код_зоны_суток" />
+            </Principal>
+            <Dependent Role="Временной_период">
+              <PropertyRef Name="Код_зоны_суток" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Временной__Код_з__5F7E2DAC">
+          <End Role="Зона_суток" Type="Self.Зона_суток" Multiplicity="1" />
+          <End Role="Временной_период" Type="Self.Временной_период" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Зона_суток">
+              <PropertyRef Name="Код_зоны_суток" />
+            </Principal>
+            <Dependent Role="Временной_период">
+              <PropertyRef Name="Код_зоны_суток" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Представи__Номер__5629CD9C">
+          <End Role="Доверенность" Type="Self.Доверенность" Multiplicity="1" />
+          <End Role="Представитель_компании" Type="Self.Представитель_компании" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Доверенность">
+              <PropertyRef Name="Номер_доверенности" />
+            </Principal>
+            <Dependent Role="Представитель_компании">
+              <PropertyRef Name="Номер_доверенности" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Представи__Номер__5E8A0973">
+          <End Role="Доверенность" Type="Self.Доверенность" Multiplicity="1" />
+          <End Role="Представитель_компании" Type="Self.Представитель_компании" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Доверенность">
+              <PropertyRef Name="Номер_доверенности" />
+            </Principal>
+            <Dependent Role="Представитель_компании">
+              <PropertyRef Name="Номер_доверенности" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Договор_э__Код_п__5441852A">
+          <End Role="Представитель_компании" Type="Self.Представитель_компании" Multiplicity="1" />
+          <End Role="Договор_энергоснабжения" Type="Self.Договор_энергоснабжения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Представитель_компании">
+              <PropertyRef Name="Код_представителя_компании" />
+            </Principal>
+            <Dependent Role="Договор_энергоснабжения">
+              <PropertyRef Name="Код_представителя_компании" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Договор_э__Код_п__5CA1C101">
+          <End Role="Представитель_компании" Type="Self.Представитель_компании" Multiplicity="1" />
+          <End Role="Договор_энергоснабжения" Type="Self.Договор_энергоснабжения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Представитель_компании">
+              <PropertyRef Name="Код_представителя_компании" />
+            </Principal>
+            <Dependent Role="Договор_энергоснабжения">
+              <PropertyRef Name="Код_представителя_компании" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Договор_э__Код_т__4AB81AF0">
+          <End Role="Тариф" Type="Self.Тариф" Multiplicity="1" />
+          <End Role="Договор_энергоснабжения" Type="Self.Договор_энергоснабжения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Тариф">
+              <PropertyRef Name="Код_тарифа" />
+            </Principal>
+            <Dependent Role="Договор_энергоснабжения">
+              <PropertyRef Name="Код_тарифа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Договор_э__Код_т__531856C7">
+          <End Role="Тариф" Type="Self.Тариф" Multiplicity="1" />
+          <End Role="Договор_энергоснабжения" Type="Self.Договор_энергоснабжения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Тариф">
+              <PropertyRef Name="Код_тарифа" />
+            </Principal>
+            <Dependent Role="Договор_энергоснабжения">
+              <PropertyRef Name="Код_тарифа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Договор_э__Номер__5165187F">
+          <End Role="Прибор_учёта" Type="Self.Прибор_учёта" Multiplicity="1" />
+          <End Role="Договор_энергоснабжения" Type="Self.Договор_энергоснабжения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Прибор_учёта">
+              <PropertyRef Name="Номер_прибора_учета" />
+            </Principal>
+            <Dependent Role="Договор_энергоснабжения">
+              <PropertyRef Name="Номер_прибора_учета" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Договор_э__Номер__59C55456">
+          <End Role="Прибор_учёта" Type="Self.Прибор_учёта" Multiplicity="1" />
+          <End Role="Договор_энергоснабжения" Type="Self.Договор_энергоснабжения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Прибор_учёта">
+              <PropertyRef Name="Номер_прибора_учета" />
+            </Principal>
+            <Dependent Role="Договор_энергоснабжения">
+              <PropertyRef Name="Номер_прибора_учета" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Показания__Номер__52593CB8">
+          <End Role="Договор_энергоснабжения" Type="Self.Договор_энергоснабжения" Multiplicity="1" />
+          <End Role="Показания_прибора_учета" Type="Self.Показания_прибора_учета" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Договор_энергоснабжения">
+              <PropertyRef Name="Номер_договора" />
+            </Principal>
+            <Dependent Role="Показания_прибора_учета">
+              <PropertyRef Name="Номер_договора" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Показания__Номер__5AB9788F">
+          <End Role="Договор_энергоснабжения" Type="Self.Договор_энергоснабжения" Multiplicity="1" />
+          <End Role="Показания_прибора_учета" Type="Self.Показания_прибора_учета" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Договор_энергоснабжения">
+              <PropertyRef Name="Номер_договора" />
+            </Principal>
+            <Dependent Role="Показания_прибора_учета">
+              <PropertyRef Name="Номер_договора" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ставка__Код_зоны__5812160E">
+          <End Role="Зона_суток" Type="Self.Зона_суток" Multiplicity="0..1" />
+          <End Role="Ставка" Type="Self.Ставка" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Зона_суток">
+              <PropertyRef Name="Код_зоны_суток" />
+            </Principal>
+            <Dependent Role="Ставка">
+              <PropertyRef Name="Код_зоны_суток" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ставка__Код_зоны__607251E5">
+          <End Role="Зона_суток" Type="Self.Зона_суток" Multiplicity="0..1" />
+          <End Role="Ставка" Type="Self.Ставка" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Зона_суток">
+              <PropertyRef Name="Код_зоны_суток" />
+            </Principal>
+            <Dependent Role="Ставка">
+              <PropertyRef Name="Код_зоны_суток" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Личные_данные__534D60F1">
+          <End Role="Паспорт" Type="Self.Паспорт" Multiplicity="1" />
+          <End Role="Личные_данные" Type="Self.Личные_данные" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Паспорт">
+              <PropertyRef Name="Серия_паспорта" />
+              <PropertyRef Name="Номер_паспорта" />
+            </Principal>
+            <Dependent Role="Личные_данные">
+              <PropertyRef Name="Серия_паспорта" />
+              <PropertyRef Name="Номер_паспорта" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Личные_данные__5BAD9CC8">
+          <End Role="Паспорт" Type="Self.Паспорт" Multiplicity="1" />
+          <End Role="Личные_данные" Type="Self.Личные_данные" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Паспорт">
+              <PropertyRef Name="Серия_паспорта" />
+              <PropertyRef Name="Номер_паспорта" />
+            </Principal>
+            <Dependent Role="Личные_данные">
+              <PropertyRef Name="Серия_паспорта" />
+              <PropertyRef Name="Номер_паспорта" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Представи__Код_л__4CA06362">
+          <End Role="Личные_данные" Type="Self.Личные_данные" Multiplicity="1" />
+          <End Role="Представитель_компании" Type="Self.Представитель_компании" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Личные_данные">
+              <PropertyRef Name="Код_личных_данных" />
+            </Principal>
+            <Dependent Role="Представитель_компании">
+              <PropertyRef Name="Код_личных_данных" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Представи__Код_л__55009F39">
+          <End Role="Личные_данные" Type="Self.Личные_данные" Multiplicity="1" />
+          <End Role="Представитель_компании" Type="Self.Представитель_компании" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Личные_данные">
+              <PropertyRef Name="Код_личных_данных" />
+            </Principal>
+            <Dependent Role="Представитель_компании">
+              <PropertyRef Name="Код_личных_данных" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ставка__Код_тари__49C3F6B7">
+          <End Role="Тариф" Type="Self.Тариф" Multiplicity="1" />
+          <End Role="Ставка" Type="Self.Ставка" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Тариф">
+              <PropertyRef Name="Код_тарифа" />
+            </Principal>
+            <Dependent Role="Ставка">
+              <PropertyRef Name="Код_тарифа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ставка__Код_тари__5224328E">
+          <End Role="Тариф" Type="Self.Тариф" Multiplicity="1" />
+          <End Role="Ставка" Type="Self.Ставка" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Тариф">
+              <PropertyRef Name="Код_тарифа" />
+            </Principal>
+            <Dependent Role="Ставка">
+              <PropertyRef Name="Код_тарифа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="АСКУЭEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Абонент" EntityType="Self.Абонент" />
+          <EntitySet Name="Адрес" EntityType="Self.Адрес" />
+          <EntitySet Name="Акт_снятия_показаний_приборов_учета" EntityType="Self.Акт_снятия_показаний_приборов_учета" />
+          <EntitySet Name="Временной_период" EntityType="Self.Временной_период" />
+          <EntitySet Name="Данные_о_жилой_площади" EntityType="Self.Данные_о_жилой_площади" />
+          <EntitySet Name="Доверенность" EntityType="Self.Доверенность" />
+          <EntitySet Name="Договор_энергоснабжения" EntityType="Self.Договор_энергоснабжения" />
+          <EntitySet Name="Зона_суток" EntityType="Self.Зона_суток" />
+          <EntitySet Name="Контактные_данные" EntityType="Self.Контактные_данные" />
+          <EntitySet Name="Личные_данные" EntityType="Self.Личные_данные" />
+          <EntitySet Name="Паспорт" EntityType="Self.Паспорт" />
+          <EntitySet Name="Показания_прибора_учета" EntityType="Self.Показания_прибора_учета" />
+          <EntitySet Name="Пользователь" EntityType="Self.Пользователь" />
+          <EntitySet Name="Представитель_компании" EntityType="Self.Представитель_компании" />
+          <EntitySet Name="Прибор_учёта" EntityType="Self.Прибор_учёта" />
+          <EntitySet Name="Ставка" EntityType="Self.Ставка" />
+          <EntitySet Name="Тариф" EntityType="Self.Тариф" />
+          <EntitySet Name="ПредставлениеАбонент" EntityType="Self.ПредставлениеАбонент" />
+          <EntitySet Name="ПредставлениеАкты" EntityType="Self.ПредставлениеАкты" />
+          <EntitySet Name="ПредставлениеДоговоры" EntityType="Self.ПредставлениеДоговоры" />
+          <EntitySet Name="ПредставлениеЗоны_суток" EntityType="Self.ПредставлениеЗоны_суток" />
+          <EntitySet Name="ПредставлениеКонт_д" EntityType="Self.ПредставлениеКонт_д" />
+          <EntitySet Name="ПредставлениеЛичн_д" EntityType="Self.ПредставлениеЛичн_д" />
+          <EntitySet Name="ПредставлениеПаспорт" EntityType="Self.ПредставлениеПаспорт" />
+          <EntitySet Name="ПредставлениеПредставитель_компании" EntityType="Self.ПредставлениеПредставитель_компании" />
+          <EntitySet Name="ПредставлениеСтавки" EntityType="Self.ПредставлениеСтавки" />
+          <EntitySet Name="ПредставлениеТарифы" EntityType="Self.ПредставлениеТарифы" />
+          <AssociationSet Name="FK__Абонент__Код_дан__5535A963" Association="Self.FK__Абонент__Код_дан__5535A963">
+            <End Role="Данные_о_жилой_площади" EntitySet="Данные_о_жилой_площади" />
+            <End Role="Абонент" EntitySet="Абонент" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Абонент__Код_дан__5D95E53A" Association="Self.FK__Абонент__Код_дан__5D95E53A">
+            <End Role="Данные_о_жилой_площади" EntitySet="Данные_о_жилой_площади" />
+            <End Role="Абонент" EntitySet="Абонент" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Абонент__Код_кон__4D94879B" Association="Self.FK__Абонент__Код_кон__4D94879B">
+            <End Role="Контактные_данные" EntitySet="Контактные_данные" />
+            <End Role="Абонент" EntitySet="Абонент" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Абонент__Код_кон__55F4C372" Association="Self.FK__Абонент__Код_кон__55F4C372">
+            <End Role="Контактные_данные" EntitySet="Контактные_данные" />
+            <End Role="Абонент" EntitySet="Абонент" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Абонент__Код_лич__4BAC3F29" Association="Self.FK__Абонент__Код_лич__4BAC3F29">
+            <End Role="Личные_данные" EntitySet="Личные_данные" />
+            <End Role="Абонент" EntitySet="Абонент" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Абонент__Код_лич__540C7B00" Association="Self.FK__Абонент__Код_лич__540C7B00">
+            <End Role="Личные_данные" EntitySet="Личные_данные" />
+            <End Role="Абонент" EntitySet="Абонент" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Договор_э__Код_а__48CFD27E" Association="Self.FK__Договор_э__Код_а__48CFD27E">
+            <End Role="Абонент" EntitySet="Абонент" />
+            <End Role="Договор_энергоснабжения" EntitySet="Договор_энергоснабжения" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Договор_э__Код_а__51300E55" Association="Self.FK__Договор_э__Код_а__51300E55">
+            <End Role="Абонент" EntitySet="Абонент" />
+            <End Role="Договор_энергоснабжения" EntitySet="Договор_энергоснабжения" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Контактны__Код_а__4E88ABD4" Association="Self.FK__Контактны__Код_а__4E88ABD4">
+            <End Role="Адрес" EntitySet="Адрес" />
+            <End Role="Контактные_данные" EntitySet="Контактные_данные" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Контактны__Код_а__56E8E7AB" Association="Self.FK__Контактны__Код_а__56E8E7AB">
+            <End Role="Адрес" EntitySet="Адрес" />
+            <End Role="Контактные_данные" EntitySet="Контактные_данные" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Паспорт__Код_адр__4F7CD00D" Association="Self.FK__Паспорт__Код_адр__4F7CD00D">
+            <End Role="Адрес" EntitySet="Адрес" />
+            <End Role="Паспорт" EntitySet="Паспорт" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Паспорт__Код_адр__57DD0BE4" Association="Self.FK__Паспорт__Код_адр__57DD0BE4">
+            <End Role="Адрес" EntitySet="Адрес" />
+            <End Role="Паспорт" EntitySet="Паспорт" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Акт_сняти__Код_п__5070F446" Association="Self.FK__Акт_сняти__Код_п__5070F446">
+            <End Role="Показания_прибора_учета" EntitySet="Показания_прибора_учета" />
+            <End Role="Акт_снятия_показаний_приборов_учета" EntitySet="Акт_снятия_показаний_приборов_учета" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Акт_сняти__Код_п__58D1301D" Association="Self.FK__Акт_сняти__Код_п__58D1301D">
+            <End Role="Показания_прибора_учета" EntitySet="Показания_прибора_учета" />
+            <End Role="Акт_снятия_показаний_приборов_учета" EntitySet="Акт_снятия_показаний_приборов_учета" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Временной__Код_з__571DF1D5" Association="Self.FK__Временной__Код_з__571DF1D5">
+            <End Role="Зона_суток" EntitySet="Зона_суток" />
+            <End Role="Временной_период" EntitySet="Временной_период" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Временной__Код_з__5F7E2DAC" Association="Self.FK__Временной__Код_з__5F7E2DAC">
+            <End Role="Зона_суток" EntitySet="Зона_суток" />
+            <End Role="Временной_период" EntitySet="Временной_период" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Представи__Номер__5629CD9C" Association="Self.FK__Представи__Номер__5629CD9C">
+            <End Role="Доверенность" EntitySet="Доверенность" />
+            <End Role="Представитель_компании" EntitySet="Представитель_компании" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Представи__Номер__5E8A0973" Association="Self.FK__Представи__Номер__5E8A0973">
+            <End Role="Доверенность" EntitySet="Доверенность" />
+            <End Role="Представитель_компании" EntitySet="Представитель_компании" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Договор_э__Код_п__5441852A" Association="Self.FK__Договор_э__Код_п__5441852A">
+            <End Role="Представитель_компании" EntitySet="Представитель_компании" />
+            <End Role="Договор_энергоснабжения" EntitySet="Договор_энергоснабжения" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Договор_э__Код_п__5CA1C101" Association="Self.FK__Договор_э__Код_п__5CA1C101">
+            <End Role="Представитель_компании" EntitySet="Представитель_компании" />
+            <End Role="Договор_энергоснабжения" EntitySet="Договор_энергоснабжения" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Договор_э__Код_т__4AB81AF0" Association="Self.FK__Договор_э__Код_т__4AB81AF0">
+            <End Role="Тариф" EntitySet="Тариф" />
+            <End Role="Договор_энергоснабжения" EntitySet="Договор_энергоснабжения" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Договор_э__Код_т__531856C7" Association="Self.FK__Договор_э__Код_т__531856C7">
+            <End Role="Тариф" EntitySet="Тариф" />
+            <End Role="Договор_энергоснабжения" EntitySet="Договор_энергоснабжения" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Договор_э__Номер__5165187F" Association="Self.FK__Договор_э__Номер__5165187F">
+            <End Role="Прибор_учёта" EntitySet="Прибор_учёта" />
+            <End Role="Договор_энергоснабжения" EntitySet="Договор_энергоснабжения" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Договор_э__Номер__59C55456" Association="Self.FK__Договор_э__Номер__59C55456">
+            <End Role="Прибор_учёта" EntitySet="Прибор_учёта" />
+            <End Role="Договор_энергоснабжения" EntitySet="Договор_энергоснабжения" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Показания__Номер__52593CB8" Association="Self.FK__Показания__Номер__52593CB8">
+            <End Role="Договор_энергоснабжения" EntitySet="Договор_энергоснабжения" />
+            <End Role="Показания_прибора_учета" EntitySet="Показания_прибора_учета" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Показания__Номер__5AB9788F" Association="Self.FK__Показания__Номер__5AB9788F">
+            <End Role="Договор_энергоснабжения" EntitySet="Договор_энергоснабжения" />
+            <End Role="Показания_прибора_учета" EntitySet="Показания_прибора_учета" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ставка__Код_зоны__5812160E" Association="Self.FK__Ставка__Код_зоны__5812160E">
+            <End Role="Зона_суток" EntitySet="Зона_суток" />
+            <End Role="Ставка" EntitySet="Ставка" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ставка__Код_зоны__607251E5" Association="Self.FK__Ставка__Код_зоны__607251E5">
+            <End Role="Зона_суток" EntitySet="Зона_суток" />
+            <End Role="Ставка" EntitySet="Ставка" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Личные_данные__534D60F1" Association="Self.FK__Личные_данные__534D60F1">
+            <End Role="Паспорт" EntitySet="Паспорт" />
+            <End Role="Личные_данные" EntitySet="Личные_данные" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Личные_данные__5BAD9CC8" Association="Self.FK__Личные_данные__5BAD9CC8">
+            <End Role="Паспорт" EntitySet="Паспорт" />
+            <End Role="Личные_данные" EntitySet="Личные_данные" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Представи__Код_л__4CA06362" Association="Self.FK__Представи__Код_л__4CA06362">
+            <End Role="Личные_данные" EntitySet="Личные_данные" />
+            <End Role="Представитель_компании" EntitySet="Представитель_компании" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Представи__Код_л__55009F39" Association="Self.FK__Представи__Код_л__55009F39">
+            <End Role="Личные_данные" EntitySet="Личные_данные" />
+            <End Role="Представитель_компании" EntitySet="Представитель_компании" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ставка__Код_тари__49C3F6B7" Association="Self.FK__Ставка__Код_тари__49C3F6B7">
+            <End Role="Тариф" EntitySet="Тариф" />
+            <End Role="Ставка" EntitySet="Ставка" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ставка__Код_тари__5224328E" Association="Self.FK__Ставка__Код_тари__5224328E">
+            <End Role="Тариф" EntitySet="Тариф" />
+            <End Role="Ставка" EntitySet="Ставка" />
+          </AssociationSet>
+          <FunctionImport Name="ПоискПоказанийАбонента" IsComposable="true" ReturnType="Collection(АСКУЭModel.ПоискПоказанийАбонента_Result)">
+          <Parameter Name="idContract" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ПоискПоследнегоСнятияПоказаний" IsComposable="true" ReturnType="Collection(АСКУЭModel.ПоискПоследнегоСнятияПоказаний_Result)">
+          <Parameter Name="idContract" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ПоискСтавокАбонента" IsComposable="true" ReturnType="Collection(АСКУЭModel.ПоискСтавокАбонента_Result)">
+          <Parameter Name="idContract" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ФильтрацияАбонентовПоУлице" IsComposable="true" ReturnType="Collection(АСКУЭModel.ФильтрацияАбонентовПоУлице_Result)">
+          <Parameter Name="street" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ФильтрацияПриборовУчёта" IsComposable="true" ReturnType="Collection(АСКУЭModel.ФильтрацияПриборовУчёта_Result)">
+            <Parameter Name="marka" Mode="In" Type="String" />
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="CalcCoeff" Mode="In" Type="Int32" />
+            <Parameter Name="period" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ФильтрацияТарифов" IsComposable="true" ReturnType="Collection(АСКУЭModel.ФильтрацияТарифов_Result)">
+            <Parameter Name="typeMeter" Mode="In" Type="String" />
+            <Parameter Name="groupConsumer" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ДобавлениеАбонент">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="idContData" Mode="In" Type="Int32" />
+            <Parameter Name="idPersData" Mode="In" Type="Int32" />
+            <Parameter Name="idHouseData" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ДобавлениеАдрес">
+            <Parameter Name="Street" Mode="In" Type="String" />
+            <Parameter Name="Home" Mode="In" Type="String" />
+            <Parameter Name="Apart" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ДобавлениеАкт_снятия_показаний_приборов_учета">
+            <Parameter Name="idStatDevMeter" Mode="In" Type="Int32" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ДобавлениеВр_пер">
+            <Parameter Name="idNameZoneDay" Mode="In" Type="Int32" />
+            <Parameter Name="BegTime" Mode="In" Type="Time" />
+            <Parameter Name="EndTime" Mode="In" Type="Time" />
+          </FunctionImport>
+          <FunctionImport Name="ДобавлениеДанные_о_жилой_площади">
+            <Parameter Name="areaLiveHouse" Mode="In" Type="Decimal" />
+            <Parameter Name="countRoom" Mode="In" Type="Int32" />
+            <Parameter Name="countLivePeople" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ДобавлениеДоверенность">
+            <Parameter Name="id" Mode="In" Type="String" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ДобавлениеДоговор_энергоснабжения">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="numMeterDev" Mode="In" Type="Int32" />
+            <Parameter Name="idAbonent" Mode="In" Type="Int32" />
+            <Parameter Name="idTariff" Mode="In" Type="Int32" />
+            <Parameter Name="idPresentComp" Mode="In" Type="Int32" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="specIf" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ДобавлениеЗона_с">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ДобавлениеКонтактные_данные">
+            <Parameter Name="idAddress" Mode="In" Type="Int32" />
+            <Parameter Name="mobPhone" Mode="In" Type="String" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ДобавлениеЛичные_данные">
+            <Parameter Name="ln" Mode="In" Type="String" />
+            <Parameter Name="fn" Mode="In" Type="String" />
+            <Parameter Name="patronomyc" Mode="In" Type="String" />
+            <Parameter Name="gender" Mode="In" Type="String" />
+            <Parameter Name="birthday" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ДобавлениеПаспорт">
+            <Parameter Name="seria" Mode="In" Type="Int32" />
+            <Parameter Name="num" Mode="In" Type="Int32" />
+            <Parameter Name="whoGive" Mode="In" Type="String" />
+            <Parameter Name="idAddress" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ДобавлениеПоказания_прибора_учёта">
+            <Parameter Name="IDContract" Mode="In" Type="Int32" />
+            <Parameter Name="PrevStat" Mode="In" Type="Int32" />
+            <Parameter Name="CurrStat" Mode="In" Type="Int32" />
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+            <Parameter Name="endStat" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="ДобавлениеПользователь">
+            <Parameter Name="login" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="role" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ДобавлениеПредставитель_компании">
+            <Parameter Name="idPersData" Mode="In" Type="Int32" />
+            <Parameter Name="numDov" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ДобавлениеПрибор_учета">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="marka" Mode="In" Type="String" />
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="CalcCoeff" Mode="In" Type="Int32" />
+            <Parameter Name="dateInstall" Mode="In" Type="DateTime" />
+            <Parameter Name="destInstall" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ДобавлениеСтавка">
+            <Parameter Name="idTariff" Mode="In" Type="String" />
+            <Parameter Name="idZoneDay" Mode="In" Type="String" />
+            <Parameter Name="cost" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="ДобавлениеТариф">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="typeMeter" Mode="In" Type="String" />
+            <Parameter Name="groupConsumer" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ИзменениеАбонент">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="idContData" Mode="In" Type="Int32" />
+            <Parameter Name="idPersData" Mode="In" Type="Int32" />
+            <Parameter Name="idHouseData" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ИзменениеАдрес">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="Street" Mode="In" Type="String" />
+            <Parameter Name="Home" Mode="In" Type="String" />
+            <Parameter Name="Apart" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ИзменениеАкт_снятия_показаний_приборов_учета">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="idStatDevMeter" Mode="In" Type="Int32" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ИзменениеВр_пер">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="idNameZoneDay" Mode="In" Type="Int32" />
+            <Parameter Name="BegTime" Mode="In" Type="Time" />
+            <Parameter Name="EndTime" Mode="In" Type="Time" />
+          </FunctionImport>
+          <FunctionImport Name="ИзменениеДанные_о_жилой_площади">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="areaLiveHouse" Mode="In" Type="Decimal" />
+            <Parameter Name="countRoom" Mode="In" Type="Int32" />
+            <Parameter Name="countLivePeople" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ИзменениеДоверенность">
+            <Parameter Name="id" Mode="In" Type="String" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ИзменениеДоговор_энергоснабжения">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="numMeterDev" Mode="In" Type="Int32" />
+            <Parameter Name="idAbonent" Mode="In" Type="Int32" />
+            <Parameter Name="idTariff" Mode="In" Type="Int32" />
+            <Parameter Name="idPresentComp" Mode="In" Type="Int32" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="specIf" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ИзменениеЗона_с">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ИзменениеКонтактные_данные">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="idAddress" Mode="In" Type="Int32" />
+            <Parameter Name="mobPhone" Mode="In" Type="String" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ИзменениеЛичные_данные">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="ln" Mode="In" Type="String" />
+            <Parameter Name="fn" Mode="In" Type="String" />
+            <Parameter Name="patronomyc" Mode="In" Type="String" />
+            <Parameter Name="gender" Mode="In" Type="String" />
+            <Parameter Name="birthday" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ИзменениеПаспорт">
+            <Parameter Name="seria" Mode="In" Type="Int32" />
+            <Parameter Name="num" Mode="In" Type="Int32" />
+            <Parameter Name="whoGive" Mode="In" Type="String" />
+            <Parameter Name="idAddress" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ИзменениеПоказания_прибора_учёта">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="IDContract" Mode="In" Type="Int32" />
+            <Parameter Name="PrevStat" Mode="In" Type="Int32" />
+            <Parameter Name="CurrStat" Mode="In" Type="Int32" />
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+            <Parameter Name="endStat" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="ИзменениеПользователь">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="login" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="role" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ИзменениеПредставитель_компании">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="idPersData" Mode="In" Type="Int32" />
+            <Parameter Name="numDov" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ИзменениеПрибор_учета">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="marka" Mode="In" Type="String" />
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="CalcCoeff" Mode="In" Type="Int32" />
+            <Parameter Name="dateInstall" Mode="In" Type="DateTime" />
+            <Parameter Name="destInstall" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ИзменениеСтавка">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="idTariff" Mode="In" Type="String" />
+            <Parameter Name="idZoneDay" Mode="In" Type="String" />
+            <Parameter Name="cost" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="ИзменениеТариф">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="typeMeter" Mode="In" Type="String" />
+            <Parameter Name="groupConsumer" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="УдалениеАкт_снятия_показаний_приборов_учета">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="УдалениеВр_пер">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="УдалениеПользователь">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище АСКУЭModelContainer" CdmEntityContainer="АСКУЭEntities">
+          <EntitySetMapping Name="Абонент">
+            <EntityTypeMapping TypeName="АСКУЭModel.Абонент">
+              <MappingFragment StoreEntitySet="Абонент">
+                <ScalarProperty Name="Код_абонета" ColumnName="Код_абонета" />
+                <ScalarProperty Name="Код_контактных_данных" ColumnName="Код_контактных_данных" />
+                <ScalarProperty Name="Код_личных_данных" ColumnName="Код_личных_данных" />
+                <ScalarProperty Name="Код_данных_о_жилой_площади" ColumnName="Код_данных_о_жилой_площади" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Адрес">
+            <EntityTypeMapping TypeName="АСКУЭModel.Адрес">
+              <MappingFragment StoreEntitySet="Адрес">
+                <ScalarProperty Name="Код_адреса" ColumnName="Код_адреса" />
+                <ScalarProperty Name="Улица" ColumnName="Улица" />
+                <ScalarProperty Name="Дом_влад_" ColumnName="Дом_влад." />
+                <ScalarProperty Name="Квартира" ColumnName="Квартира" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Акт_снятия_показаний_приборов_учета">
+            <EntityTypeMapping TypeName="АСКУЭModel.Акт_снятия_показаний_приборов_учета">
+              <MappingFragment StoreEntitySet="Акт_снятия_показаний_приборов_учета">
+                <ScalarProperty Name="Код_акта_снятия_показаний_приборов_учета" ColumnName="Код_акта_снятия_показаний_приборов_учета" />
+                <ScalarProperty Name="Код_показаний_прибора_учета" ColumnName="Код_показаний_прибора_учета" />
+                <ScalarProperty Name="Дата_сдачи_акта" ColumnName="Дата_сдачи_акта" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Временной_период">
+            <EntityTypeMapping TypeName="АСКУЭModel.Временной_период">
+              <MappingFragment StoreEntitySet="Временной_период">
+                <ScalarProperty Name="Код_временного_периода" ColumnName="Код_временного_периода" />
+                <ScalarProperty Name="Код_зоны_суток" ColumnName="Код_зоны_суток" />
+                <ScalarProperty Name="Начало_временного_периода" ColumnName="Начало_временного_периода" />
+                <ScalarProperty Name="Конец_временного_периода" ColumnName="Конец_временного_периода" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Данные_о_жилой_площади">
+            <EntityTypeMapping TypeName="АСКУЭModel.Данные_о_жилой_площади">
+              <MappingFragment StoreEntitySet="Данные_о_жилой_площади">
+                <ScalarProperty Name="Код_данных_о_жилой_площади" ColumnName="Код_данных_о_жилой_площади" />
+                <ScalarProperty Name="Площадь_жилового_дома_кв_м_" ColumnName="Площадь_жилового_дома_кв.м." />
+                <ScalarProperty Name="Кол_во_комнат" ColumnName="Кол-во_комнат" />
+                <ScalarProperty Name="Кол_во_проживающих_граждан" ColumnName="Кол-во_проживающих_граждан" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Доверенность">
+            <EntityTypeMapping TypeName="АСКУЭModel.Доверенность">
+              <MappingFragment StoreEntitySet="Доверенность">
+                <ScalarProperty Name="Номер_доверенности" ColumnName="Номер_доверенности" />
+                <ScalarProperty Name="Дата_выдачи_доверенности" ColumnName="Дата_выдачи_доверенности" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Договор_энергоснабжения">
+            <EntityTypeMapping TypeName="АСКУЭModel.Договор_энергоснабжения">
+              <MappingFragment StoreEntitySet="Договор_энергоснабжения">
+                <ScalarProperty Name="Номер_договора" ColumnName="Номер_договора" />
+                <ScalarProperty Name="Номер_прибора_учета" ColumnName="Номер_прибора_учета" />
+                <ScalarProperty Name="Код_абонета" ColumnName="Код_абонета" />
+                <ScalarProperty Name="Код_представителя_компании" ColumnName="Код_представителя_компании" />
+                <ScalarProperty Name="Код_тарифа" ColumnName="Код_тарифа" />
+                <ScalarProperty Name="Дата_заключения_договора" ColumnName="Дата_заключения_договора" />
+                <ScalarProperty Name="Особые_условия" ColumnName="Особые_условия" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Зона_суток">
+            <EntityTypeMapping TypeName="АСКУЭModel.Зона_суток">
+              <MappingFragment StoreEntitySet="Зона_суток">
+                <ScalarProperty Name="Код_зоны_суток" ColumnName="Код_зоны_суток" />
+                <ScalarProperty Name="Название_зоны_суток" ColumnName="Название_зоны_суток" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Контактные_данные">
+            <EntityTypeMapping TypeName="АСКУЭModel.Контактные_данные">
+              <MappingFragment StoreEntitySet="Контактные_данные">
+                <ScalarProperty Name="Код_контактных_данных" ColumnName="Код_контактных_данных" />
+                <ScalarProperty Name="Код_адреса" ColumnName="Код_адреса" />
+                <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+                <ScalarProperty Name="Мобильный_Телефон" ColumnName="Мобильный_Телефон" />
+                <ScalarProperty Name="Электронная_почта" ColumnName="Электронная_почта" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Личные_данные">
+            <EntityTypeMapping TypeName="АСКУЭModel.Личные_данные">
+              <MappingFragment StoreEntitySet="Личные_данные">
+                <ScalarProperty Name="Код_личных_данных" ColumnName="Код_личных_данных" />
+                <ScalarProperty Name="Серия_паспорта" ColumnName="Серия_паспорта" />
+                <ScalarProperty Name="Номер_паспорта" ColumnName="Номер_паспорта" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Дата_рождения" ColumnName="Дата_рождения" />
+                <ScalarProperty Name="Пол" ColumnName="Пол" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Паспорт">
+            <EntityTypeMapping TypeName="АСКУЭModel.Паспорт">
+              <MappingFragment StoreEntitySet="Паспорт">
+                <ScalarProperty Name="Серия_паспорта" ColumnName="Серия_паспорта" />
+                <ScalarProperty Name="Номер_паспорта" ColumnName="Номер_паспорта" />
+                <ScalarProperty Name="Код_адреса" ColumnName="Код_адреса" />
+                <ScalarProperty Name="Кем_выдан" ColumnName="Кем_выдан" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Показания_прибора_учета">
+            <EntityTypeMapping TypeName="АСКУЭModel.Показания_прибора_учета">
+              <MappingFragment StoreEntitySet="Показания_прибора_учета">
+                <ScalarProperty Name="Код_показаний_прибора_учета" ColumnName="Код_показаний_прибора_учета" />
+                <ScalarProperty Name="Номер_договора" ColumnName="Номер_договора" />
+                <ScalarProperty Name="Предыдущие_показания" ColumnName="Предыдущие_показания" />
+                <ScalarProperty Name="Текущие_показания" ColumnName="Текущие_показания" />
+                <ScalarProperty Name="Дата_снятия_показаний" ColumnName="Дата_снятия_показаний" />
+                <ScalarProperty Name="Конечные_показания" ColumnName="Конечные_показания" />
+                <ScalarProperty Name="Расход" ColumnName="Расход" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Пользователь">
+            <EntityTypeMapping TypeName="АСКУЭModel.Пользователь">
+              <MappingFragment StoreEntitySet="Пользователь">
+                <ScalarProperty Name="Код_пользователя" ColumnName="Код_пользователя" />
+                <ScalarProperty Name="Логин" ColumnName="Логин" />
+                <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+                <ScalarProperty Name="Роль" ColumnName="Роль" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Представитель_компании">
+            <EntityTypeMapping TypeName="АСКУЭModel.Представитель_компании">
+              <MappingFragment StoreEntitySet="Представитель_компании">
+                <ScalarProperty Name="Код_представителя_компании" ColumnName="Код_представителя_компании" />
+                <ScalarProperty Name="Код_личных_данных" ColumnName="Код_личных_данных" />
+                <ScalarProperty Name="Номер_доверенности" ColumnName="Номер_доверенности" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Прибор_учёта">
+            <EntityTypeMapping TypeName="АСКУЭModel.Прибор_учёта">
+              <MappingFragment StoreEntitySet="Прибор_учёта">
+                <ScalarProperty Name="Номер_прибора_учета" ColumnName="Номер_прибора_учета" />
+                <ScalarProperty Name="Марка" ColumnName="Марка" />
+                <ScalarProperty Name="Тип" ColumnName="Тип" />
+                <ScalarProperty Name="Расчетный_коэффициент" ColumnName="Расчетный_коэффициент" />
+                <ScalarProperty Name="Дата_установки_введения_в_эксплуатацию__" ColumnName="Дата_установки_введения_в_эксплуатацию__" />
+                <ScalarProperty Name="Место_установки" ColumnName="Место_установки" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ставка">
+            <EntityTypeMapping TypeName="АСКУЭModel.Ставка">
+              <MappingFragment StoreEntitySet="Ставка">
+                <ScalarProperty Name="Код_ставки" ColumnName="Код_ставки" />
+                <ScalarProperty Name="Код_тарифа" ColumnName="Код_тарифа" />
+                <ScalarProperty Name="Код_зоны_суток" ColumnName="Код_зоны_суток" />
+                <ScalarProperty Name="Цена_за_кВт_час" ColumnName="Цена_за_кВт_час" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Тариф">
+            <EntityTypeMapping TypeName="АСКУЭModel.Тариф">
+              <MappingFragment StoreEntitySet="Тариф">
+                <ScalarProperty Name="Код_тарифа" ColumnName="Код_тарифа" />
+                <ScalarProperty Name="Тип_учёта" ColumnName="Тип_учёта" />
+                <ScalarProperty Name="Группа_населения" ColumnName="Группа_населения" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ПредставлениеАбонент">
+            <EntityTypeMapping TypeName="АСКУЭModel.ПредставлениеАбонент">
+              <MappingFragment StoreEntitySet="ПредставлениеАбонент">
+                <ScalarProperty Name="Код_абонета" ColumnName="Код_абонета" />
+                <ScalarProperty Name="Серия_паспорта" ColumnName="Серия_паспорта" />
+                <ScalarProperty Name="Номер_паспорта" ColumnName="Номер_паспорта" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Дата_рождения" ColumnName="Дата_рождения" />
+                <ScalarProperty Name="Пол" ColumnName="Пол" />
+                <ScalarProperty Name="Кем_выдан" ColumnName="Кем_выдан" />
+                <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+                <ScalarProperty Name="Мобильный_Телефон" ColumnName="Мобильный_Телефон" />
+                <ScalarProperty Name="Электронная_почта" ColumnName="Электронная_почта" />
+                <ScalarProperty Name="Улица" ColumnName="Улица" />
+                <ScalarProperty Name="Дом_влад_" ColumnName="Дом_влад." />
+                <ScalarProperty Name="Квартира" ColumnName="Квартира" />
+                <ScalarProperty Name="Площадь_жилового_дома_кв_м_" ColumnName="Площадь_жилового_дома_кв.м." />
+                <ScalarProperty Name="Кол_во_комнат" ColumnName="Кол-во_комнат" />
+                <ScalarProperty Name="Кол_во_проживающих_граждан" ColumnName="Кол-во_проживающих_граждан" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ПредставлениеАкты">
+            <EntityTypeMapping TypeName="АСКУЭModel.ПредставлениеАкты">
+              <MappingFragment StoreEntitySet="ПредставлениеАкты">
+                <ScalarProperty Name="Код_акта_снятия_показаний_приборов_учета" ColumnName="Код_акта_снятия_показаний_приборов_учета" />
+                <ScalarProperty Name="Номер_договора" ColumnName="Номер_договора" />
+                <ScalarProperty Name="Предыдущие_показания" ColumnName="Предыдущие_показания" />
+                <ScalarProperty Name="Текущие_показания" ColumnName="Текущие_показания" />
+                <ScalarProperty Name="Дата_снятия_показаний" ColumnName="Дата_снятия_показаний" />
+                <ScalarProperty Name="Расход" ColumnName="Расход" />
+                <ScalarProperty Name="Дата_сдачи_акта" ColumnName="Дата_сдачи_акта" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ПредставлениеДоговоры">
+            <EntityTypeMapping TypeName="АСКУЭModel.ПредставлениеДоговоры">
+              <MappingFragment StoreEntitySet="ПредставлениеДоговоры">
+                <ScalarProperty Name="Отчество_представителя" ColumnName="Отчество представителя" />
+                <ScalarProperty Name="Имя_представителя" ColumnName="Имя представителя" />
+                <ScalarProperty Name="Фамилия_представителя" ColumnName="Фамилия представителя" />
+                <ScalarProperty Name="Код_представителя_компании" ColumnName="Код_представителя_компании" />
+                <ScalarProperty Name="Номер_договора" ColumnName="Номер_договора" />
+                <ScalarProperty Name="Дата_заключения_договора" ColumnName="Дата_заключения_договора" />
+                <ScalarProperty Name="Особые_условия" ColumnName="Особые_условия" />
+                <ScalarProperty Name="Код_тарифа" ColumnName="Код_тарифа" />
+                <ScalarProperty Name="Номер_прибора_учета" ColumnName="Номер_прибора_учета" />
+                <ScalarProperty Name="Марка" ColumnName="Марка" />
+                <ScalarProperty Name="Тип" ColumnName="Тип" />
+                <ScalarProperty Name="Расчетный_коэффициент" ColumnName="Расчетный_коэффициент" />
+                <ScalarProperty Name="Дата_установки_введения_в_эксплуатацию__" ColumnName="Дата_установки_введения_в_эксплуатацию__" />
+                <ScalarProperty Name="Место_установки" ColumnName="Место_установки" />
+                <ScalarProperty Name="Код_абонета" ColumnName="Код_абонета" />
+                <ScalarProperty Name="Серия_паспорта" ColumnName="Серия_паспорта" />
+                <ScalarProperty Name="Номер_паспорта" ColumnName="Номер_паспорта" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Дата_рождения" ColumnName="Дата_рождения" />
+                <ScalarProperty Name="Пол" ColumnName="Пол" />
+                <ScalarProperty Name="Кем_выдан" ColumnName="Кем_выдан" />
+                <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+                <ScalarProperty Name="Мобильный_Телефон" ColumnName="Мобильный_Телефон" />
+                <ScalarProperty Name="Электронная_почта" ColumnName="Электронная_почта" />
+                <ScalarProperty Name="Улица" ColumnName="Улица" />
+                <ScalarProperty Name="Дом_влад_" ColumnName="Дом_влад." />
+                <ScalarProperty Name="Квартира" ColumnName="Квартира" />
+                <ScalarProperty Name="Площадь_жилового_дома_кв_м_" ColumnName="Площадь_жилового_дома_кв.м." />
+                <ScalarProperty Name="Кол_во_комнат" ColumnName="Кол-во_комнат" />
+                <ScalarProperty Name="Кол_во_проживающих_граждан" ColumnName="Кол-во_проживающих_граждан" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ПредставлениеЗоны_суток">
+            <EntityTypeMapping TypeName="АСКУЭModel.ПредставлениеЗоны_суток">
+              <MappingFragment StoreEntitySet="ПредставлениеЗоны_суток">
+                <ScalarProperty Name="Код_зоны_суток" ColumnName="Код_зоны_суток" />
+                <ScalarProperty Name="Название_зоны_суток" ColumnName="Название_зоны_суток" />
+                <ScalarProperty Name="Начало_временного_периода" ColumnName="Начало_временного_периода" />
+                <ScalarProperty Name="Конец_временного_периода" ColumnName="Конец_временного_периода" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ПредставлениеКонт_д">
+            <EntityTypeMapping TypeName="АСКУЭModel.ПредставлениеКонт_д">
+              <MappingFragment StoreEntitySet="ПредставлениеКонт_д">
+                <ScalarProperty Name="Код_контактных_данных" ColumnName="Код_контактных_данных" />
+                <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+                <ScalarProperty Name="Мобильный_Телефон" ColumnName="Мобильный_Телефон" />
+                <ScalarProperty Name="Электронная_почта" ColumnName="Электронная_почта" />
+                <ScalarProperty Name="Улица" ColumnName="Улица" />
+                <ScalarProperty Name="Дом_влад_" ColumnName="Дом_влад." />
+                <ScalarProperty Name="Квартира" ColumnName="Квартира" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ПредставлениеЛичн_д">
+            <EntityTypeMapping TypeName="АСКУЭModel.ПредставлениеЛичн_д">
+              <MappingFragment StoreEntitySet="ПредставлениеЛичн_д">
+                <ScalarProperty Name="Код_личных_данных" ColumnName="Код_личных_данных" />
+                <ScalarProperty Name="Серия_паспорта" ColumnName="Серия_паспорта" />
+                <ScalarProperty Name="Номер_паспорта" ColumnName="Номер_паспорта" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Дата_рождения" ColumnName="Дата_рождения" />
+                <ScalarProperty Name="Пол" ColumnName="Пол" />
+                <ScalarProperty Name="Кем_выдан" ColumnName="Кем_выдан" />
+                <ScalarProperty Name="Улица" ColumnName="Улица" />
+                <ScalarProperty Name="Дом_влад_" ColumnName="Дом_влад." />
+                <ScalarProperty Name="Квартира" ColumnName="Квартира" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ПредставлениеПаспорт">
+            <EntityTypeMapping TypeName="АСКУЭModel.ПредставлениеПаспорт">
+              <MappingFragment StoreEntitySet="ПредставлениеПаспорт">
+                <ScalarProperty Name="Серия_паспорта" ColumnName="Серия_паспорта" />
+                <ScalarProperty Name="Номер_паспорта" ColumnName="Номер_паспорта" />
+                <ScalarProperty Name="Кем_выдан" ColumnName="Кем_выдан" />
+                <ScalarProperty Name="Улица" ColumnName="Улица" />
+                <ScalarProperty Name="Дом_влад_" ColumnName="Дом_влад." />
+                <ScalarProperty Name="Квартира" ColumnName="Квартира" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ПредставлениеПредставитель_компании">
+            <EntityTypeMapping TypeName="АСКУЭModel.ПредставлениеПредставитель_компании">
+              <MappingFragment StoreEntitySet="ПредставлениеПредставитель_компании">
+                <ScalarProperty Name="Код_представителя_компании" ColumnName="Код_представителя_компании" />
+                <ScalarProperty Name="Серия_паспорта" ColumnName="Серия_паспорта" />
+                <ScalarProperty Name="Номер_паспорта" ColumnName="Номер_паспорта" />
+                <ScalarProperty Name="Номер_доверенности" ColumnName="Номер_доверенности" />
+                <ScalarProperty Name="Дата_выдачи_доверенности" ColumnName="Дата_выдачи_доверенности" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Дата_рождения" ColumnName="Дата_рождения" />
+                <ScalarProperty Name="Пол" ColumnName="Пол" />
+                <ScalarProperty Name="Кем_выдан" ColumnName="Кем_выдан" />
+                <ScalarProperty Name="Улица" ColumnName="Улица" />
+                <ScalarProperty Name="Дом_влад_" ColumnName="Дом_влад." />
+                <ScalarProperty Name="Квартира" ColumnName="Квартира" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ПредставлениеСтавки">
+            <EntityTypeMapping TypeName="АСКУЭModel.ПредставлениеСтавки">
+              <MappingFragment StoreEntitySet="ПредставлениеСтавки">
+                <ScalarProperty Name="Код_тарифа" ColumnName="Код_тарифа" />
+                <ScalarProperty Name="Название_зоны_суток" ColumnName="Название_зоны_суток" />
+                <ScalarProperty Name="Начало_временного_периода" ColumnName="Начало_временного_периода" />
+                <ScalarProperty Name="Конец_временного_периода" ColumnName="Конец_временного_периода" />
+                <ScalarProperty Name="Цена_за_кВт_час" ColumnName="Цена_за_кВт_час" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ПредставлениеТарифы">
+            <EntityTypeMapping TypeName="АСКУЭModel.ПредставлениеТарифы">
+              <MappingFragment StoreEntitySet="ПредставлениеТарифы">
+                <ScalarProperty Name="Код_тарифа" ColumnName="Код_тарифа" />
+                <ScalarProperty Name="Тип_учёта" ColumnName="Тип_учёта" />
+                <ScalarProperty Name="Группа_населения" ColumnName="Группа_населения" />
+                <ScalarProperty Name="Название_зоны_суток" ColumnName="Название_зоны_суток" />
+                <ScalarProperty Name="Начало_временного_периода" ColumnName="Начало_временного_периода" />
+                <ScalarProperty Name="Конец_временного_периода" ColumnName="Конец_временного_периода" />
+                <ScalarProperty Name="Цена_за_кВт_час" ColumnName="Цена_за_кВт_час" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="Хранилище АСКУЭModel.ПоискПоказанийАбонента" FunctionImportName="ПоискПоказанийАбонента">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="АСКУЭModel.ПоискПоказанийАбонента_Result">
+                <ScalarProperty Name="Код_показаний_прибора_учета" ColumnName="Код_показаний_прибора_учета" />
+                <ScalarProperty Name="Номер_договора" ColumnName="Номер_договора" />
+                <ScalarProperty Name="Предыдущие_показания" ColumnName="Предыдущие_показания" />
+                <ScalarProperty Name="Текущие_показания" ColumnName="Текущие_показания" />
+                <ScalarProperty Name="Дата_снятия_показаний" ColumnName="Дата_снятия_показаний" />
+                <ScalarProperty Name="Конечные_показания" ColumnName="Конечные_показания" />
+                <ScalarProperty Name="Расход" ColumnName="Расход" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="Хранилище АСКУЭModel.ПоискПоследнегоСнятияПоказаний" FunctionImportName="ПоискПоследнегоСнятияПоказаний">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="АСКУЭModel.ПоискПоследнегоСнятияПоказаний_Result">
+                <ScalarProperty Name="Код_показаний_прибора_учета" ColumnName="Код_показаний_прибора_учета" />
+                <ScalarProperty Name="Номер_договора" ColumnName="Номер_договора" />
+                <ScalarProperty Name="Предыдущие_показания" ColumnName="Предыдущие_показания" />
+                <ScalarProperty Name="Текущие_показания" ColumnName="Текущие_показания" />
+                <ScalarProperty Name="Дата_снятия_показаний" ColumnName="Дата_снятия_показаний" />
+                <ScalarProperty Name="Конечные_показания" ColumnName="Конечные_показания" />
+                <ScalarProperty Name="Расход" ColumnName="Расход" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="Хранилище АСКУЭModel.ПоискСтавокАбонента" FunctionImportName="ПоискСтавокАбонента">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="АСКУЭModel.ПоискСтавокАбонента_Result">
+                <ScalarProperty Name="Код_ставки" ColumnName="Код_ставки" />
+                <ScalarProperty Name="Код_тарифа" ColumnName="Код_тарифа" />
+                <ScalarProperty Name="Код_зоны_суток" ColumnName="Код_зоны_суток" />
+                <ScalarProperty Name="Цена_за_кВт_час" ColumnName="Цена_за_кВт_час" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="Хранилище АСКУЭModel.ФильтрацияАбонентовПоУлице" FunctionImportName="ФильтрацияАбонентовПоУлице">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="АСКУЭModel.ФильтрацияАбонентовПоУлице_Result">
+                <ScalarProperty Name="Код_абонета" ColumnName="Код_абонета" />
+                <ScalarProperty Name="Серия_паспорта" ColumnName="Серия_паспорта" />
+                <ScalarProperty Name="Номер_паспорта" ColumnName="Номер_паспорта" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Дата_рождения" ColumnName="Дата_рождения" />
+                <ScalarProperty Name="Пол" ColumnName="Пол" />
+                <ScalarProperty Name="Кем_выдан" ColumnName="Кем_выдан" />
+                <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+                <ScalarProperty Name="Мобильный_Телефон" ColumnName="Мобильный_Телефон" />
+                <ScalarProperty Name="Электронная_почта" ColumnName="Электронная_почта" />
+                <ScalarProperty Name="Улица" ColumnName="Улица" />
+                <ScalarProperty Name="Дом_влад_" ColumnName="Дом_влад." />
+                <ScalarProperty Name="Квартира" ColumnName="Квартира" />
+                <ScalarProperty Name="Площадь_жилового_дома_кв_м_" ColumnName="Площадь_жилового_дома_кв.м." />
+                <ScalarProperty Name="Кол_во_комнат" ColumnName="Кол-во_комнат" />
+                <ScalarProperty Name="Кол_во_проживающих_граждан" ColumnName="Кол-во_проживающих_граждан" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="Хранилище АСКУЭModel.ФильтрацияПриборовУчёта" FunctionImportName="ФильтрацияПриборовУчёта">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="АСКУЭModel.ФильтрацияПриборовУчёта_Result">
+                <ScalarProperty Name="Номер_прибора_учета" ColumnName="Номер_прибора_учета" />
+                <ScalarProperty Name="Марка" ColumnName="Марка" />
+                <ScalarProperty Name="Тип" ColumnName="Тип" />
+                <ScalarProperty Name="Расчетный_коэффициент" ColumnName="Расчетный_коэффициент" />
+                <ScalarProperty Name="Дата_установки_введения_в_эксплуатацию__" ColumnName="Дата_установки_введения_в_эксплуатацию__" />
+                <ScalarProperty Name="Место_установки" ColumnName="Место_установки" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="Хранилище АСКУЭModel.ФильтрацияТарифов" FunctionImportName="ФильтрацияТарифов">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="АСКУЭModel.ФильтрацияТарифов_Result">
+                <ScalarProperty Name="Код_тарифа" ColumnName="Код_тарифа" />
+                <ScalarProperty Name="Тип_учёта" ColumnName="Тип_учёта" />
+                <ScalarProperty Name="Группа_населения" ColumnName="Группа_населения" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ДобавлениеАбонент" FunctionName="Хранилище АСКУЭModel.ДобавлениеАбонент" />
+          <FunctionImportMapping FunctionImportName="ДобавлениеАдрес" FunctionName="Хранилище АСКУЭModel.ДобавлениеАдрес" />
+          <FunctionImportMapping FunctionImportName="ДобавлениеАкт_снятия_показаний_приборов_учета" FunctionName="Хранилище АСКУЭModel.ДобавлениеАкт_снятия_показаний_приборов_учета" />
+          <FunctionImportMapping FunctionImportName="ДобавлениеВр_пер" FunctionName="Хранилище АСКУЭModel.ДобавлениеВр_пер" />
+          <FunctionImportMapping FunctionImportName="ДобавлениеДанные_о_жилой_площади" FunctionName="Хранилище АСКУЭModel.ДобавлениеДанные_о_жилой_площади" />
+          <FunctionImportMapping FunctionImportName="ДобавлениеДоверенность" FunctionName="Хранилище АСКУЭModel.ДобавлениеДоверенность" />
+          <FunctionImportMapping FunctionImportName="ДобавлениеДоговор_энергоснабжения" FunctionName="Хранилище АСКУЭModel.ДобавлениеДоговор_энергоснабжения" />
+          <FunctionImportMapping FunctionImportName="ДобавлениеЗона_с" FunctionName="Хранилище АСКУЭModel.ДобавлениеЗона_с" />
+          <FunctionImportMapping FunctionImportName="ДобавлениеКонтактные_данные" FunctionName="Хранилище АСКУЭModel.ДобавлениеКонтактные_данные" />
+          <FunctionImportMapping FunctionImportName="ДобавлениеЛичные_данные" FunctionName="Хранилище АСКУЭModel.ДобавлениеЛичные_данные" />
+          <FunctionImportMapping FunctionImportName="ДобавлениеПаспорт" FunctionName="Хранилище АСКУЭModel.ДобавлениеПаспорт" />
+          <FunctionImportMapping FunctionImportName="ДобавлениеПоказания_прибора_учёта" FunctionName="Хранилище АСКУЭModel.ДобавлениеПоказания_прибора_учёта" />
+          <FunctionImportMapping FunctionImportName="ДобавлениеПользователь" FunctionName="Хранилище АСКУЭModel.ДобавлениеПользователь" />
+          <FunctionImportMapping FunctionImportName="ДобавлениеПредставитель_компании" FunctionName="Хранилище АСКУЭModel.ДобавлениеПредставитель_компании" />
+          <FunctionImportMapping FunctionImportName="ДобавлениеПрибор_учета" FunctionName="Хранилище АСКУЭModel.ДобавлениеПрибор_учета" />
+          <FunctionImportMapping FunctionImportName="ДобавлениеСтавка" FunctionName="Хранилище АСКУЭModel.ДобавлениеСтавка" />
+          <FunctionImportMapping FunctionImportName="ДобавлениеТариф" FunctionName="Хранилище АСКУЭModel.ДобавлениеТариф" />
+          <FunctionImportMapping FunctionImportName="ИзменениеАбонент" FunctionName="Хранилище АСКУЭModel.ИзменениеАбонент" />
+          <FunctionImportMapping FunctionImportName="ИзменениеАдрес" FunctionName="Хранилище АСКУЭModel.ИзменениеАдрес" />
+          <FunctionImportMapping FunctionImportName="ИзменениеАкт_снятия_показаний_приборов_учета" FunctionName="Хранилище АСКУЭModel.ИзменениеАкт_снятия_показаний_приборов_учета" />
+          <FunctionImportMapping FunctionImportName="ИзменениеВр_пер" FunctionName="Хранилище АСКУЭModel.ИзменениеВр_пер" />
+          <FunctionImportMapping FunctionImportName="ИзменениеДанные_о_жилой_площади" FunctionName="Хранилище АСКУЭModel.ИзменениеДанные_о_жилой_площади" />
+          <FunctionImportMapping FunctionImportName="ИзменениеДоверенность" FunctionName="Хранилище АСКУЭModel.ИзменениеДоверенность" />
+          <FunctionImportMapping FunctionImportName="ИзменениеДоговор_энергоснабжения" FunctionName="Хранилище АСКУЭModel.ИзменениеДоговор_энергоснабжения" />
+          <FunctionImportMapping FunctionImportName="ИзменениеЗона_с" FunctionName="Хранилище АСКУЭModel.ИзменениеЗона_с" />
+          <FunctionImportMapping FunctionImportName="ИзменениеКонтактные_данные" FunctionName="Хранилище АСКУЭModel.ИзменениеКонтактные_данные" />
+          <FunctionImportMapping FunctionImportName="ИзменениеЛичные_данные" FunctionName="Хранилище АСКУЭModel.ИзменениеЛичные_данные" />
+          <FunctionImportMapping FunctionImportName="ИзменениеПаспорт" FunctionName="Хранилище АСКУЭModel.ИзменениеПаспорт" />
+          <FunctionImportMapping FunctionImportName="ИзменениеПоказания_прибора_учёта" FunctionName="Хранилище АСКУЭModel.ИзменениеПоказания_прибора_учёта" />
+          <FunctionImportMapping FunctionImportName="ИзменениеПользователь" FunctionName="Хранилище АСКУЭModel.ИзменениеПользователь" />
+          <FunctionImportMapping FunctionImportName="ИзменениеПредставитель_компании" FunctionName="Хранилище АСКУЭModel.ИзменениеПредставитель_компании" />
+          <FunctionImportMapping FunctionImportName="ИзменениеПрибор_учета" FunctionName="Хранилище АСКУЭModel.ИзменениеПрибор_учета" />
+          <FunctionImportMapping FunctionImportName="ИзменениеСтавка" FunctionName="Хранилище АСКУЭModel.ИзменениеСтавка" />
+          <FunctionImportMapping FunctionImportName="ИзменениеТариф" FunctionName="Хранилище АСКУЭModel.ИзменениеТариф" />
+          <FunctionImportMapping FunctionImportName="УдалениеАкт_снятия_показаний_приборов_учета" FunctionName="Хранилище АСКУЭModel.УдалениеАкт_снятия_показаний_приборов_учета" />
+          <FunctionImportMapping FunctionImportName="УдалениеВр_пер" FunctionName="Хранилище АСКУЭModel.УдалениеВр_пер" />
+          <FunctionImportMapping FunctionImportName="УдалениеПользователь" FunctionName="Хранилище АСКУЭModel.УдалениеПользователь" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

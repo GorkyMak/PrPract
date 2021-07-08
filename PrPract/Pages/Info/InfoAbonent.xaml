@@ -1,0 +1,71 @@
+﻿<Page x:Class="PrPract.Pages.Info.InfoAbonent"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PrPract.Pages.Info"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="InfoAbonent">
+    <Page.Resources>
+        <Style TargetType="Button" BasedOn="{StaticResource BaseBtnStyle}">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="TextBox" BasedOn="{StaticResource BaseTBStyle}"/>
+    </Page.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid Name="DGAbonent" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер договора" Binding="{Binding Номер_договора}"/>
+                <DataGridTextColumn Header="Дата заключения договора" Binding="{Binding Дата_заключения_договора, StringFormat=dd.MM.yyyy}"/>
+                <DataGridTextColumn Header="Код тарифа" Binding="{Binding Код_тарифа}"/>
+                <DataGridTextColumn Header="Тип учёта" Binding="{Binding Тариф.Тип_учёта}"/>
+                <DataGridTextColumn Header="Группа населения" Binding="{Binding Тариф.Группа_населения}"/>
+                <DataGridTextColumn Header="Номер прибора учета" Binding="{Binding Номер_прибора_учета}"/>
+                <DataGridTextColumn Header="Марка" Binding="{Binding Прибор_учёта.Марка}"/>
+                <DataGridTextColumn Header="Тип" Binding="{Binding Прибор_учёта.Тип}"/>
+                <DataGridTextColumn Header="Расчетный коэффициент" Binding="{Binding Прибор_учёта.Расчетный_коэффициент}"/>
+                <DataGridTextColumn Header="Дата установки(введения в эксплуатацию)" Binding="{Binding Прибор_учёта.Дата_установки_введения_в_эксплуатацию__, StringFormat=dd.MM.yyyy}"/>
+                <DataGridTextColumn Header="Место установки" Binding="{Binding Прибор_учёта.Место_установки}"/>
+                <DataGridTextColumn Header="Код абонета" Binding="{Binding Код_абонета}"/>
+                <DataGridTextColumn Header="ФИО абонента" Binding="{Binding Абонент.Личные_данные}"/>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding Абонент.Личные_данные.Дата_рождения, StringFormat=dd.MM.yyyy}"/>
+                <DataGridTextColumn Header="Пол" Binding="{Binding Абонент.Личные_данные.Пол}"/>
+                <DataGridTextColumn Header="Серия паспорта" Binding="{Binding Абонент.Личные_данные.Серия_паспорта}"/>
+                <DataGridTextColumn Header="Номер паспорта" Binding="{Binding Абонент.Личные_данные.Номер_паспорта}"/>
+                <DataGridTextColumn Header="Кем выдан" Binding="{Binding Абонент.Личные_данные.Паспорт.Кем_выдан}"/>
+                <DataGridTextColumn Header="Телефон" Binding="{Binding Абонент.Контактные_данные.Телефон}"/>
+                <DataGridTextColumn Header="Мобильный Телефон" Binding="{Binding Абонент.Контактные_данные.Мобильный_Телефон}"/>
+                <DataGridTextColumn Header="Электронная почта" Binding="{Binding Абонент.Контактные_данные.Электронная_почта}"/>
+                <DataGridTextColumn Header="Адрес абонента" Binding="{Binding Абонент.Контактные_данные.Адрес}"/>
+                <DataGridTextColumn Header="Площадь жилового дома кв м" Binding="{Binding Абонент.Данные_о_жилой_площади.Площадь_жилового_дома_кв_м_}"/>
+                <DataGridTextColumn Header="Кол-во комнат" Binding="{Binding Абонент.Данные_о_жилой_площади.Кол_во_комнат}"/>
+                <DataGridTextColumn Header="Кол-во проживающих граждан" Binding="{Binding Абонент.Данные_о_жилой_площади.Кол_во_проживающих_граждан}"/>
+                <DataGridTextColumn Header="Код представителя компании" Binding="{Binding Код_представителя_компании}"/>
+                <DataGridTextColumn Header="ФИО представителя" Binding="{Binding Представитель_компании.Личные_данные}"/>
+            </DataGrid.Columns>
+
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="MIAdd" Header="Добавить" Click="MIAdd_Click"/>
+                    <MenuItem x:Name="MIChange" Header="Изменить" Click="MIChange_Click"/>
+                    <MenuItem x:Name="MIDelete" Header="Удалить" Click="MIDelete_Click"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+
+        <StackPanel x:Name="SpSearch" Grid.Column="1" Margin="10 0 0 0">
+            <TextBlock Text="Фильтрация по дате заключения договора" Padding="5" TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center"/>
+            <DatePicker x:Name="DPMinDate" SelectedDate="01.01.2000"/>
+            <DatePicker x:Name="DPMaxDate" Margin="0 5"/>
+            <Label Content="Поиск по номеру договора" HorizontalContentAlignment="Center"/>
+            <TextBox x:Name="TBSearchLine"/>
+            <Button x:Name="BtnSearch" Content="Поиск" Click="BtnSearch_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>
